@@ -42,8 +42,11 @@ Options
 ## PriorityQueue(options = {})
 ### options.comperator
 `options.comperator` will define an order relation of each values in PriorityQueue.
+
 PriorityQueue with default comperator serves as numerical descending order for numeric values, or lexical descending order for string values.
+
 Comperator function format is in according with an argument function of `Array.prototype.sort()`. 
+
 
 ### options.strategy
 - PriorityQueue.BinaryHeapStrategy (default)
@@ -51,8 +54,11 @@ Comperator function format is in according with an argument function of `Array.p
 - PriorityQueue.PairingHeapStrategy
 
 All of above strategies are faster than simple implementation such that with `Array.prototype.push() / sort() & pop()`, in the sense of time complexity. 
+
 A binary heap is simple(-er than almost other) and has an in-place algorithm and low complexity.
+
 A skew heap and pairing heap are also faster, but these implementation requires using "linked list" structure. Thus, a bit slow. Why these strategies exist? In case of merging queues, time complexity of two each merging is constant time. 
+
 
 API
 ----
