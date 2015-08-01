@@ -20,9 +20,10 @@ class Point{
   }
 }
 
-let pq = new PriorityQueue((a, b)=>
-  a.x === b.x ? a.x - b.x : a.y - b.y;
-);
+let pq = new PriorityQueue({
+	comperator: (a, b)=>
+	  a.x !== b.x ? a.x - b.x : a.y - b.y;
+});
 
 pq.push(new Point(4,6));
 pq.push(new Point(2,3));
