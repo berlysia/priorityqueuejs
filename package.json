@@ -1,6 +1,6 @@
 {
   "name": "priorityqueue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An implementation of Priority Queue",
   "main": "lib/index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git@github.com:berlysia/priorityqueuejs.git"
   },
-  "keyword": [
+  "keywords": [
     "priority",
     "queue",
     "priority queue",
