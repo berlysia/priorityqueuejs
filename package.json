@@ -17,6 +17,13 @@
     "type": "git",
     "url": "git@github.com:berlysia/priorityqueuejs.git"
   },
+  "keyword": [
+    "priority",
+    "queue",
+    "priority queue",
+    "heap",
+    "data structure"
+  ],
   "devDependencies": {
     "babel": "^5.8.12",
     "esformatter": "^0.7.2",
