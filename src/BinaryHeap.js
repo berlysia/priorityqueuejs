@@ -56,6 +56,10 @@ class BinaryHeap extends AbstructHeap {
     return this.collection.length;
   }
 
+  get length() {
+    return this.collection.length;
+  }
+
   push(value) {
     this.collection.push(value);
     const arr = this.collection;

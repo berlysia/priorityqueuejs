@@ -56,9 +56,11 @@ class PairingHeap extends AbstructHeap {
   constructor(comp) {
     super(comp);
     this.root = null;
+    this._length = 0;
   }
 
   clear() {
+    this._length = 0;
     this.root = null;
   }
 
@@ -67,11 +69,16 @@ class PairingHeap extends AbstructHeap {
   }
 
   size() {
-    return count(this.root);
+    return this._length;
+  }
+
+  get length() {
+    return this._length;
   }
 
   push(val) {
     this.root = merge(this.root, new PairingHeapNode(val), this.comp);
+    ++this._length;
     return this;
   }
 
@@ -82,11 +89,13 @@ class PairingHeap extends AbstructHeap {
   pop() {
     const ret = this.root.value;
     this.root = mergeList(this.root.head, this.comp);
+    --this._length;
     return ret;
   }
 
   meld(other) {
     this.root = merge(this.root, other.root, this.comp);
+    this._length += other.length;
     return this;
   }
 
