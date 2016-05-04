@@ -2,8 +2,8 @@
 
 class AbstructHeap {
   /**
-   * Constructor of Priority Queue, with the given 'comperator'.
-   * 'comperator' should be same as Array.prototype.sort's argument.
+   * Constructor of Priority Queue, with the given 'comparator'.
+   * 'comparator' should be same as Array.prototype.sort's argument.
    * Like this: (a, b) => (a == b ? 0 : (a < b ? -1 : 1));
    * If not, default function will be passed by PriorityQueue entrypoint.
    * @param {Function}
