@@ -5,11 +5,11 @@ import PairingHeap from './PairingHeap.js';
 function PriorityQueue(options = {}) {
   if (typeof options === "function") {
     options = {
-      comperator: options
+      comparator: options
     };
   }
   options.strategy = options.strategy || PriorityQueue.BinaryHeapStrategy;
-  options.comperator = options.comperator || ((a, b) => {
+  options.comparator = options.comparator || ((a, b) => {
       if ([a, b].every(x => typeof x === 'number')) return a - b; else {
         a = a.toString();
         b = b.toString();
@@ -19,16 +19,16 @@ function PriorityQueue(options = {}) {
 
   switch (Number(options.strategy)) {
     case PriorityQueue.BinaryHeapStrategy:
-      return new BinaryHeap(options.comperator);
+      return new BinaryHeap(options.comparator);
       break;
     case PriorityQueue.SkewHeapStrategy:
-      return new SkewHeap(options.comperator);
+      return new SkewHeap(options.comparator);
       break;
     case PriorityQueue.PairingHeapStrategy:
-      return new PairingHeap(options.comperator);
+      return new PairingHeap(options.comparator);
       break;
     default:
-      return new BinaryHeap(options.comperator);
+      return new BinaryHeap(options.comparator);
   }
 }
 

@@ -90,7 +90,7 @@ describe('basic Priority Queue features', () => {
       it('with user object', () => {
         let mpq = new PriorityQueue({
           strategy: parseInt(strategy),
-          comperator: myObjectComp
+          comparator: myObjectComp
         });
 
         for (let i = 0; i < caseSize; ++i) {

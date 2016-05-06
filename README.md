@@ -21,7 +21,7 @@ class Point{
 }
 
 let pq = new PriorityQueue({
-	comperator: (a, b)=>
+	comparator: (a, b)=>
 	  a.x !== b.x ? a.x - b.x : a.y - b.y;
 });
 
@@ -40,12 +40,12 @@ pq.top() // Point{x: 6, y: 5}
 Options
 ----
 ## PriorityQueue(options = {})
-### options.comperator
-`options.comperator` will define an order relation of each values in PriorityQueue.
+### options.comparator
+`options.comparator` will define an order relation of each values in PriorityQueue.
 
-PriorityQueue with default comperator serves as numerical descending order for numeric values, or lexical descending order for string values.
+PriorityQueue with default comparator serves as numerical descending order for numeric values, or lexical descending order for string values.
 
-Comperator function format is in according with an argument function of `Array.prototype.sort()`. 
+comparator function format is in according with an argument function of `Array.prototype.sort()`. 
 
 
 ### options.strategy
@@ -84,7 +84,7 @@ Pushes the value at the instance.
 
 ## top()
 ## peek()
-Peeks at the top of the instance in order specified by `options.comperator`.
+Peeks at the top of the instance in order specified by `options.comparator`.
 
 ## pop()
 ## dequeue()
