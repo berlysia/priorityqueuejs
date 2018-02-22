@@ -7,7 +7,7 @@ class AbstructHeap {
    * Like this: (a, b) => (a == b ? 0 : (a < b ? -1 : 1));
    * If not, default function will be passed by PriorityQueue entrypoint.
    * @param {Function}
-   * @return {AbstractHeap<ElementType>}   
+   * @return {AbstractHeap<ElementType>}
    */
   constructor(comp) {
     this.comp = comp;
@@ -72,7 +72,7 @@ class AbstructHeap {
   }
 
   /**
-   * Get the top element of the priority queue. 
+   * Get the top element of the priority queue.
    * @return {ElementType}
    */
   top() {

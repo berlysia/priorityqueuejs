@@ -6,10 +6,11 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "watch": "babel src --out-dir lib -w",
-    "format": "esformatter -i src/**/*.js -i test/**/*.js",
+    "lint": "eslint .",
     "prepublish": "npm run clean && npm run build",
     "clean": "rm -rf lib/*",
-    "test": "mocha --compilers js:espower-babel/guess test/**/*.test.js"
+    "test": "jest",
+    "precommit": "lint-staged && npm test"
   },
   "author": "berlysia",
   "license": "MIT",
@@ -25,14 +26,29 @@
     "data structure"
   ],
   "devDependencies": {
-    "babel": "^5.8.12",
-    "esformatter": "^0.7.2",
-    "espower-babel": "^3.2.0",
-    "mocha": "^2.2.5",
-    "power-assert": "^0.11.0",
-    "pre-commit": "^1.0.10"
+    "@berlysia/eslint-config": "^0.1.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.18.1",
+    "flow-bin": "^0.66.0",
+    "husky": "^0.14.3",
+    "jest": "^22.4.0",
+    "lint-staged": "^7.0.0",
+    "regenerator-runtime": "^0.11.1"
   },
-  "pre-commit": [
-    "format"
-  ]
+  "lint-staged": {
+    "*.js": [
+      "npm run lint"
+    ]
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "./src/**/*.js"
+    ],
+    "coverageDirectory": "<rootDir>/coverage"
+  }
 }

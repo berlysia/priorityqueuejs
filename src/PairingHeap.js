@@ -1,5 +1,5 @@
 "use strict";
-import AbstructHeap from './AbstructHeap.js';
+import AbstructHeap from "./AbstructHeap.js";
 
 class PairingHeapNode {
   constructor(val) {
@@ -21,15 +21,14 @@ function count(node) {
 
 function merge(a, b, comp) {
   if (!(a && b)) return a || b;
-  if (comp(a.value, b.value) < 0)
-    [a, b] = [b, a];
+  if (comp(a.value, b.value) < 0) [a, b] = [b, a];
   b.next = a.head;
   a.head = b;
   return a;
 }
 
 function mergeList(s, comp) {
-  let n = new PairingHeapNode(null);
+  const n = new PairingHeapNode(null);
   while (s) {
     let a = s,
       b = null;
@@ -65,7 +64,9 @@ class PairingHeap extends AbstructHeap {
   }
 
   toArray() {
-    return traverse(this.root).sort(this.comp).reverse();
+    return traverse(this.root)
+      .sort(this.comp)
+      .reverse();
   }
 
   size() {
@@ -104,7 +105,7 @@ class PairingHeap extends AbstructHeap {
   }
 
   empty() {
-    return !!this.root;
+    return Boolean(this.root);
   }
 }
 
