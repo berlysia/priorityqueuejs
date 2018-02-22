@@ -2,7 +2,7 @@
 function shuffle(array) {
   let n = array.length;
   while (n) {
-    let i = Math.floor(Math.random() * n--);
+    const i = Math.floor(Math.random() * n--);
     [array[n], array[i]] = [array[i], array[n]];
   }
 
@@ -11,7 +11,7 @@ function shuffle(array) {
 export { shuffle };
 
 function range(sz, frm = 0) {
-  let ret = [];
+  const ret = [];
   for (let i = frm; i < sz; ++i) ret.push(i);
   return ret;
 }
