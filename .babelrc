@@ -1,13 +1,25 @@
 {
   "presets": [
-    ["env", { "modules": false }],
+    ["env", {
+      "modules": false
+    }],
+    "stage-1",
     "flow"
   ],
   "env": {
     "test": {
       "presets": [
-        ["env", { "modules": "commonjs" }],
-        "flow"
+        ["env", { "modules": "commonjs" }]
+      ]
+    },
+    "esmodule": {
+      "presets": [
+        ["env", { "modules": false }]
+      ]
+    },
+    "commonjs": {
+      "presets": [
+        ["env", { "modules": "commonjs" }]
       ]
     }
   }
