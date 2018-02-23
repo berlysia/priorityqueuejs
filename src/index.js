@@ -2,32 +2,32 @@ import BinaryHeap from "./BinaryHeap.js";
 import SkewHeap from "./SkewHeap.js";
 import PairingHeap from "./PairingHeap.js";
 
-function PriorityQueue(options = {}) {
+function PriorityQueue(givenOptions = {}) {
+  let options = { ...givenOptions };
   if (typeof options === "function") {
     options = {
-      comparator: options
+      comparator: options,
     };
   }
   options.strategy = options.strategy || PriorityQueue.BinaryHeapStrategy;
   options.comparator =
     options.comparator ||
     ((a, b) => {
-      if ([a, b].every(x => typeof x === "number")) return a - b;
-      a = a.toString();
-      b = b.toString();
-      return a === b ? 0 : a < b ? -1 : 1;
+      if ([a, b].every(x => typeof x === "number")) {
+        return a > b ? 1 : a < b ? -1 : 0;
+      }
+      const aStr = a.toString();
+      const bStr = b.toString();
+      return aStr === bStr ? 0 : aStr < bStr ? -1 : 1;
     });
 
   switch (Number(options.strategy)) {
     case PriorityQueue.BinaryHeapStrategy:
       return new BinaryHeap(options.comparator);
-      break;
     case PriorityQueue.SkewHeapStrategy:
       return new SkewHeap(options.comparator);
-      break;
     case PriorityQueue.PairingHeapStrategy:
       return new PairingHeap(options.comparator);
-      break;
     default:
       return new BinaryHeap(options.comparator);
   }
@@ -36,7 +36,7 @@ function PriorityQueue(options = {}) {
 PriorityQueue.strategies = [
   "BinaryHeapStrategy",
   "SkewHeapStrategy",
-  "PairingHeapStrategy"
+  "PairingHeapStrategy",
 ];
 
 PriorityQueue.strategies.forEach((x, i) => {

@@ -1,4 +1,5 @@
 "use strict";
+/* eslint-disable class-methods-use-this */
 
 class AbstructHeap {
   /**
@@ -19,7 +20,7 @@ class AbstructHeap {
    * @return {void}
    */
   clear() {
-    throw "Not Implemented";
+    throw new Error("Not Implemented");
   }
 
   /**
@@ -39,7 +40,7 @@ class AbstructHeap {
    * @return {Array<ElementType>}
    */
   toArray() {
-    throw "Not Implemented";
+    throw new Error("Not Implemented");
   }
 
   /**
@@ -48,8 +49,7 @@ class AbstructHeap {
    * @return {Number}
    */
   size() {
-    throw "Not Implemented";
-    return 0;
+    throw new Error("Not Implemented");
   }
 
   /**
@@ -58,8 +58,7 @@ class AbstructHeap {
    * @return {AbstructHash<ElementType>}
    */
   push(value) {
-    throw "Not Implemented";
-    return this;
+    throw new Error("Not Implemented");
   }
 
   /**
@@ -76,7 +75,7 @@ class AbstructHeap {
    * @return {ElementType}
    */
   top() {
-    throw "Not Implemented";
+    throw new Error("Not Implemented");
   }
 
   /**
@@ -92,7 +91,7 @@ class AbstructHeap {
    * @return {ElementType}
    */
   pop() {
-    throw "Not Implemented";
+    throw new Error("Not Implemented");
   }
 
   /**

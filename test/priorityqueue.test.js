@@ -2,16 +2,16 @@ import PriorityQueue from "../src/index.js";
 import { shuffle, range } from "./util.js";
 
 describe("basic Priority Queue features", () => {
-  let randCaseSize = 3,
-    caseSize = 100;
-  let seqCase,
-    randomCases,
-    randomCasesAnswer,
-    myObjectCase,
-    myObjectCaseAnswer,
-    myObjectComp;
+  const randCaseSize = 3;
+  const caseSize = 100;
+  let seqCase;
+  let randomCases;
+  let randomCasesAnswer;
+  let myObjectCase;
+  let myObjectCaseAnswer;
+  let myObjectComp;
 
-  before(() => {
+  beforeAll(() => {
     seqCase = shuffle(range(caseSize));
 
     randomCases = new Array(randCaseSize);
@@ -19,36 +19,42 @@ describe("basic Priority Queue features", () => {
     for (let i = 0; i < randCaseSize; ++i) {
       randomCases[i] = [];
       for (let j = 0, c = 0; j < caseSize; ++j) {
-        if (!c) randomCases[i].push(seqCase[j]);
-        else {
-          if (Math.random() < 0.5) {
-            randomCases[i].push(seqCase[j--]);
-            ++c;
-          } else {
-            randomCases[i].push("pop");
-          }
+        if (!c) {
+          randomCases[i].push(seqCase[j]);
+          continue;
         }
+        if (Math.random() < 0.5) {
+          randomCases[i].push(seqCase[j]);
+          j -= 1;
+          c += 1;
+          continue;
+        }
+
+        randomCases[i].push("pop");
       }
       randomCasesAnswer[i] = [];
       const t = [];
       for (const item of randomCases[i]) {
-        if (item !== "pop") t.push(item);
-        else randomCasesAnswer[i].push(t.sort((a, b) => a - b).pop());
+        if (item === "pop") {
+          randomCasesAnswer[i].push(t.sort((a, b) => a - b).pop());
+        } else {
+          t.push(item);
+        }
       }
     }
 
     myObjectCase = [];
     myObjectCaseAnswer = [];
-    let xs = shuffle(range(caseSize)),
-      ys = shuffle(range(caseSize));
+    const xs = shuffle(range(caseSize));
+    const ys = shuffle(range(caseSize));
     for (let i = 0; i < caseSize; ++i) {
       myObjectCase.push({
         x: xs[i],
-        y: ys[i]
+        y: ys[i],
       });
       myObjectCaseAnswer.push({
         x: xs[i],
-        y: ys[i]
+        y: ys[i],
       });
     }
 
@@ -61,7 +67,7 @@ describe("basic Priority Queue features", () => {
       let pq;
       beforeEach(() => {
         pq = new PriorityQueue({
-          strategy: parseInt(strategy)
+          strategy: parseInt(strategy, 10),
         });
       });
 
@@ -79,12 +85,13 @@ describe("basic Priority Queue features", () => {
         it(`randomize ${caseSize} times push/pop #${randCase + 1}`, () => {
           let popCount = 0;
           for (let i = 0; i < caseSize; ++i) {
-            if (randomCases[randCase][i] !== "pop")
-              pq.push(randomCases[randCase][i]);
-            else {
-              const expected = randomCasesAnswer[randCase][popCount++],
-                actual = pq.pop();
+            if (randomCases[randCase][i] === "pop") {
+              const expected = randomCasesAnswer[randCase][popCount];
+              popCount += 1;
+              const actual = pq.pop();
               expect(actual).toBe(expected);
+            } else {
+              pq.push(randomCases[randCase][i]);
             }
           }
         });
@@ -92,8 +99,8 @@ describe("basic Priority Queue features", () => {
 
       it("with user object", () => {
         const mpq = new PriorityQueue({
-          strategy: parseInt(strategy),
-          comparator: myObjectComp
+          strategy: parseInt(strategy, 10),
+          comparator: myObjectComp,
         });
 
         for (let i = 0; i < caseSize; ++i) {
@@ -101,8 +108,8 @@ describe("basic Priority Queue features", () => {
         }
 
         for (let i = caseSize - 1; i >= 0; --i) {
-          const actual = mpq.pop(),
-            expected = myObjectCaseAnswer[i];
+          const actual = mpq.pop();
+          const expected = myObjectCaseAnswer[i];
           expect(actual).toEqual(expected);
         }
       });

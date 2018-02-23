@@ -2,13 +2,13 @@
 import AbstructHeap from "./AbstructHeap.js";
 
 function _parent(i) {
-  return i >> 1;
+  return Math.floor(i / 2);
 }
 function _right(i) {
-  return (i << 1) + 1;
+  return i * 2 + 1;
 }
 function _left(i) {
-  return i << 1;
+  return i * 2;
 }
 
 function heapify(arr, i, comp) {
@@ -24,7 +24,7 @@ function heapify(arr, i, comp) {
     const t = arr[i];
     arr[i] = arr[largest];
     arr[largest] = t;
-    return heapify(arr, largest, comp);
+    heapify(arr, largest, comp);
   }
 }
 
@@ -40,7 +40,7 @@ class BinaryHeap extends AbstructHeap {
 
   from(array) {
     this.collection = array.slice(0);
-    for (let i = ~~(array.length / 2); i >= 0; --i)
+    for (let i = Math.floor(array.length / 2); i >= 0; --i)
       heapify(this.collection, i, this.comp);
     return this;
   }
