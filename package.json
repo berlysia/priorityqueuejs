@@ -4,8 +4,8 @@
   "description": "An implementation of Priority Queue",
   "main": "lib/index.js",
   "scripts": {
-    "build": "babel src --out-dir lib",
-    "watch": "babel src --out-dir lib -w",
+    "build": "babel src --out-dir lib --ignore *.test.js",
+    "watch": "npm run build -- --watch",
     "lint": "eslint \"src/**\"",
     "typecheck": "flow",
     "prepublish": "run-s clean build",
