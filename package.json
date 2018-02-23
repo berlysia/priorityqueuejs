@@ -13,7 +13,7 @@
     "typecheck": "flow",
     "prepublish": "run-s clean build",
     "clean": "rm -rf lib/*",
-    "test": "jest",
+    "test": "cross-env NODE_ENV=test jest",
     "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file --release-count 1 --append",
     "preversion": "run-s lint test typecheck build",
     "version": "run-s changelog",
@@ -63,6 +63,9 @@
   },
   "jest": {
     "collectCoverage": true,
-    "coverageDirectory": "<rootDir>/coverage"
+    "coverageDirectory": "<rootDir>/coverage",
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    }
   }
 }
