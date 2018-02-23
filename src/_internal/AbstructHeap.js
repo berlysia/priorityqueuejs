@@ -112,3 +112,5 @@ class AbstructHeap {
 }
 
 export default AbstructHeap;
+
+/* eslint-enable class-methods-use-this */
