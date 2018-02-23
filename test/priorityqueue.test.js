@@ -1,5 +1,10 @@
+import shuffleArray from "shuffle-array";
+import range from "lodash.range";
+import random from "seed-random";
 import PriorityQueue from "../src/index.js";
-import { shuffle, range } from "./util.js";
+
+const rng = random("priorityqueue");
+const shuffle = arr => shuffleArray(arr, { rng });
 
 describe("basic Priority Queue features", () => {
   const randCaseSize = 3;
