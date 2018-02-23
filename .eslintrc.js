@@ -24,6 +24,7 @@ module.exports = {
     "prefer-destructuring": ["error", {"object": true, "array": false}],
     'flowtype/no-types-missing-file-annotation': 'off',
     'flowtype/require-variable-type': 'off',
+    'flowtype/require-parameter-type': ['error', { excludeArrowFunctions: 'expressionsOnly' }],
     'eslint-comments/disable-enable-pair': 'error',
     'eslint-comments/no-aggregating-enable': 'error',
     'eslint-comments/no-duplicate-disable': 'error',
