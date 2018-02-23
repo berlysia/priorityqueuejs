@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "watch": "babel src --out-dir lib -w",
-    "lint": "eslint \"src/**\" \"test/**\"",
+    "lint": "eslint \"src/**\"",
     "typecheck": "flow",
     "prepublish": "run-s clean build",
     "clean": "rm -rf lib/*",
@@ -39,6 +39,8 @@
     "babel-preset-flow": "^6.23.0",
     "conventional-changelog-cli": "^1.3.14",
     "eslint": "^4.18.1",
+    "eslint-plugin-eslint-comments": "^2.0.2",
+    "eslint-plugin-jest": "^21.12.2",
     "flow-bin": "^0.66.0",
     "husky": "^0.14.3",
     "jest": "^22.4.0",

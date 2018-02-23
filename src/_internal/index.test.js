@@ -1,7 +1,7 @@
 import shuffleArray from "shuffle-array";
 import range from "lodash.range";
 import random from "seed-random";
-import PriorityQueue from "../src/index.js";
+import PriorityQueue from "./";
 
 const rng = random("priorityqueue");
 const shuffle = arr => shuffleArray(arr, { rng });
