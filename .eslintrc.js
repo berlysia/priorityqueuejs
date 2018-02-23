@@ -10,8 +10,14 @@ module.exports = {
     ecmaVersion: 2017,
     sourceType: 'module',
   },
-  extends: ['@berlysia/eslint-config/prettier'],
+  extends: [
+    '@berlysia/eslint-config/base-prettier',
+    '@berlysia/eslint-config/flow-prettier',
+  ],
   rules: {
-    'flowtype/no-types-missing-file-annotation': 'off'
-  },
+    'one-var': ['error', 'never'],
+    "prefer-destructuring": ["error", {"object": true, "array": false}],
+    'flowtype/no-types-missing-file-annotation': 'off',
+    'flowtype/require-variable-type': 'off',
+  }
 };
