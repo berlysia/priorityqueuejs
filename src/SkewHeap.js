@@ -14,14 +14,9 @@ function traverse(node) {
   return [...traverse(node.left), node.value, ...traverse(node.right)];
 }
 
-function count(node) {
-  if (!node) return 0;
-  return 1 + count(node.left) + count(node.right);
-}
-
 function meld(a, b, comp) {
   if (!(a && b)) return a || b;
-  if (comp(a.value, b.value) < 0) [a, b] = [b, a];
+  if (comp(a.value, b.value) < 0) return meld(b, a, comp);
   a.right = meld(a.right, b, comp);
   [a.left, a.right] = [a.right, a.left];
   return a;
@@ -55,7 +50,7 @@ class SkewHeap extends AbstructHeap {
 
   push(val) {
     this.root = meld(this.root, new SkewHeapNode(val), this.comp);
-    ++this._length;
+    this._length += 1;
     return this;
   }
 
@@ -66,7 +61,7 @@ class SkewHeap extends AbstructHeap {
   pop() {
     const ret = this.root;
     this.root = meld(this.root.right, this.root.left, this.comp);
-    --this._length;
+    this._length -= 1;
     return ret.value;
   }
 

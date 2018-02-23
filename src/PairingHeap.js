@@ -14,24 +14,20 @@ function traverse(node) {
   return [node.value, ...traverse(node.next), ...traverse(node.head)];
 }
 
-function count(node) {
-  if (!node) return 0;
-  return 1 + count(node.head) + count(node.next);
-}
-
 function merge(a, b, comp) {
   if (!(a && b)) return a || b;
-  if (comp(a.value, b.value) < 0) [a, b] = [b, a];
+  if (comp(a.value, b.value) < 0) return merge(b, a, comp);
   b.next = a.head;
   a.head = b;
   return a;
 }
 
-function mergeList(s, comp) {
+function mergeList(_s, comp) {
+  let s = _s;
   const n = new PairingHeapNode(null);
   while (s) {
-    let a = s,
-      b = null;
+    let a = s;
+    let b = null;
     s = s.next;
     a.next = null;
     if (s) {
@@ -79,7 +75,7 @@ class PairingHeap extends AbstructHeap {
 
   push(val) {
     this.root = merge(this.root, new PairingHeapNode(val), this.comp);
-    ++this._length;
+    this._length += 1;
     return this;
   }
 
@@ -90,7 +86,7 @@ class PairingHeap extends AbstructHeap {
   pop() {
     const ret = this.root.value;
     this.root = mergeList(this.root.head, this.comp);
-    --this._length;
+    this._length -= 1;
     return ret;
   }
 
