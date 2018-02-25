@@ -73,7 +73,7 @@ export default class BinaryHeap<T> extends PriorityQueue<T> {
     return this.collection.length;
   }
 
-  top(): ?T {
+  top(): T {
     return this.collection[0];
   }
 

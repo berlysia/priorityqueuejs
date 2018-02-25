@@ -33,10 +33,10 @@ export default class PriorityQueue<T> {
   enqueue(value: T): void {
     return this.push(value);
   }
-  top(): ?T {
+  top(): T {
     throw new Error("not implemented");
   }
-  peek(): ?T {
+  peek(): T {
     return this.top();
   }
   pop(): T {
