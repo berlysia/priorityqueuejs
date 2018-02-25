@@ -2,11 +2,11 @@
   "name": "priorityqueue",
   "version": "0.2.1",
   "description": "An implementation of Priority Queue",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
+  "main": "lib/cjs",
+  "module": "lib/esm",
   "scripts": {
-    "build:cjs": "cross-env NODE_ENV=commonjs babel src --out-dir lib/cjs --ignore *.test.js",
-    "build:esm": "cross-env NODE_ENV=esmodule babel src --out-dir lib/esm --ignore *.test.js",
+    "build:cjs": "cross-env NODE_ENV=commonjs babel src --out-dir lib/cjs --ignore *.test.js,testing/**",
+    "build:esm": "cross-env NODE_ENV=esmodule babel src --out-dir lib/esm --ignore *.test.js,testing/**",
     "build": "run-p build:*",
     "watch": "run-p \"build:* -- --watch\"",
     "lint": "eslint \"src/**\"",
@@ -47,6 +47,7 @@
     "eslint-plugin-eslint-comments": "^2.0.2",
     "eslint-plugin-jest": "^21.12.2",
     "flow-bin": "^0.66.0",
+    "flow-typed": "^2.3.0",
     "husky": "^0.14.3",
     "jest": "^22.4.0",
     "lint-staged": "^7.0.0",
@@ -64,6 +65,11 @@
   "jest": {
     "collectCoverage": true,
     "coverageDirectory": "<rootDir>/coverage",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/testing/**"
+    ],
     "transform": {
       "^.+\\.js?$": "babel-jest"
     }

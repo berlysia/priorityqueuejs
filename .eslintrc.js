@@ -6,6 +6,11 @@ module.exports = {
     node: true,
     "jest/globals": true,
   },
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  },
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2017,
