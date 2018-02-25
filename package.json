@@ -4,6 +4,7 @@
   "description": "An implementation of Priority Queue",
   "main": "lib/cjs",
   "module": "lib/esm",
+  "sideEffect": false,
   "scripts": {
     "build:cjs": "cross-env NODE_ENV=commonjs babel src --out-dir lib/cjs --ignore *.test.js,testing/**",
     "build:esm": "cross-env NODE_ENV=esmodule babel src --out-dir lib/esm --ignore *.test.js,testing/**",
