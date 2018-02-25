@@ -1,57 +1,99 @@
-"use strict";
-import AbstructHeap from "./AbstructHeap.js";
+// @flow
+import PriorityQueue from "./PriorityQueue";
+import type { PriorityQueueOption } from "./PriorityQueue";
+import type { Comparator } from "./comparator";
 
-class PairingHeapNode {
-  constructor(val) {
-    this.value = val;
-    this.head = null;
-    this.next = null;
-  }
+type Node<T> = {
+  value: T,
+  nextSibling: ?Node<T>,
+  leftMostChild: ?Node<T>,
+};
+
+function createNode<T>(value: T): Node<T> {
+  return {
+    value,
+    nextSibling: null,
+    leftMostChild: null,
+  };
 }
 
-function traverse(node) {
+function traverse<T>(node: ?Node<T>): Array<T> {
   if (!node) return [];
-  return [node.value, ...traverse(node.next), ...traverse(node.head)];
+
+  return [
+    node.value,
+    ...traverse(node.leftMostChild),
+    ...traverse(node.nextSibling),
+  ];
 }
 
-function merge(a, b, comp) {
-  if (!(a && b)) return a || b;
-  if (comp(a.value, b.value) < 0) return merge(b, a, comp);
-  b.next = a.head;
-  a.head = b;
+/** mutate first argument */
+function mergeNode<T>(a: ?Node<T>, b: ?Node<T>, comp: Comparator<T>): ?Node<T> {
+  if (!a || !b) return a || b;
+  if (comp(a.value, b.value) < 0) {
+    return mergeNode(b, a, comp);
+  }
+  b.nextSibling = a.leftMostChild;
+  a.leftMostChild = b;
   return a;
 }
 
-function mergeList(_s, comp) {
-  let s = _s;
-  const n = new PairingHeapNode(null);
-  while (s) {
-    let a = s;
-    let b = null;
-    s = s.next;
-    a.next = null;
-    if (s) {
-      b = s;
-      s = s.next;
-      b.next = null;
+function mergeChildren<T>(
+  leftMostChild: ?Node<T>,
+  comp: Comparator<T>
+): ?Node<T> {
+  let cursor = leftMostChild;
+  let lastSibling = null;
+  let first = null;
+  let second = null;
+
+  while (cursor) {
+    // isolate first node & move cursor
+    first = cursor;
+    cursor = first.nextSibling;
+    first.nextSibling = null;
+
+    // isolate second node & move cursor
+    second = cursor;
+    if (second) {
+      cursor = second.nextSibling;
+      second.nextSibling = null;
     }
-    a = merge(a, b, comp);
-    a.next = n.next;
-    n.next = a;
+
+    // merge first pair
+    first = mergeNode(first, second, comp);
+
+    // collect merged siblings in reversed order
+    (first: any).nextSibling = lastSibling; // first is clearly present
+    lastSibling = first;
   }
-  while (n.next) {
-    const j = n.next;
-    n.next = n.next.next;
-    s = merge(j, s, comp);
+
+  let revCursor = null;
+  while (lastSibling) {
+    // move revCursor
+    revCursor = lastSibling;
+    lastSibling = revCursor.nextSibling;
+
+    // merge last pair
+    revCursor = mergeNode(revCursor, cursor, comp);
+    cursor = revCursor;
   }
-  return s;
+  return cursor;
 }
 
-class PairingHeap extends AbstructHeap {
-  constructor(comp) {
-    super(comp);
-    this.root = null;
-    this._length = 0;
+class PairingHeap<T> extends PriorityQueue<T> {
+  root: ?Node<T> = null;
+  _length: number = 0;
+
+  static from(
+    array: Array<T>,
+    option: PriorityQueueOption<T> = {}
+  ): PairingHeap<T> {
+    const instance = new PairingHeap(option);
+    for (let i = 0, l = array.length; i < l; ++i) {
+      instance.push(array[i]);
+    }
+    return instance;
   }
 
   clear() {
@@ -59,49 +101,49 @@ class PairingHeap extends AbstructHeap {
     this.root = null;
   }
 
-  toArray() {
-    return traverse(this.root)
-      .sort(this.comp)
-      .reverse();
-  }
-
-  size() {
+  get length(): number {
     return this._length;
   }
 
-  get length() {
-    return this._length;
-  }
-
-  push(val) {
-    this.root = merge(this.root, new PairingHeapNode(val), this.comp);
+  push(val: T): void {
+    this.root = mergeNode(this.root, createNode(val), this.comparator);
     this._length += 1;
-    return this;
   }
 
-  top() {
+  top(): T {
+    if (!this.root) {
+      throw new Error("invalid operation: top() called for empty PairingHeap");
+    }
     return this.root.value;
   }
 
-  pop() {
+  pop(): T {
+    if (!this.root) {
+      throw new Error("invalid operation: pop() called for empty PairingHeap");
+    }
     const ret = this.root.value;
-    this.root = mergeList(this.root.head, this.comp);
+    this.root = mergeChildren(this.root.leftMostChild, this.comparator);
     this._length -= 1;
     return ret;
   }
 
-  meld(other) {
-    this.root = merge(this.root, other.root, this.comp);
-    this._length += other.length;
-    return this;
+  merge(other: PriorityQueue<T>): void {
+    if (other instanceof PairingHeap && this.comparator === other.comparator) {
+      this.root = mergeNode(this.root, other.root, this.comparator);
+      this._length += other.length;
+      return;
+    }
+    for (let i = 0, a = other.toArray(), l = a.length; i < l; ++i) {
+      this.push(a[i]);
+    }
   }
 
-  merge(other) {
-    return this.meld(other);
+  toArray(): Array<T> {
+    return traverse(this.root).sort(this.comparator);
   }
 
-  empty() {
-    return Boolean(this.root);
+  isEmpty() {
+    return !this.root;
   }
 }
 
