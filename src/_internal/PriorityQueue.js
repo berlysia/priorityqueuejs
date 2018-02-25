@@ -48,9 +48,6 @@ export default class PriorityQueue<T> {
   merge(other: PriorityQueue<T>): void {
     throw new Error("not implemented");
   }
-  meld(other: PriorityQueue<T>): void {
-    return this.merge(other);
-  }
   isEmpty(): boolean {
     throw new Error("not implemented");
   }
