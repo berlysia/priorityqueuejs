@@ -20,7 +20,8 @@
     "version": "run-s changelog && git add CHANGELOG.md",
     "precommit": "lint-staged",
     "ci": "run-s lint typecheck test",
-    "postci": "codecov"
+    "postci": "codecov",
+    "documentation": "documentation build src -f md > API.md"
   },
   "author": "berlysia",
   "license": "MIT",
@@ -47,6 +48,7 @@
     "codecov": "^3.0.0",
     "conventional-changelog-cli": "^1.3.14",
     "cross-env": "^5.1.3",
+    "documentation": "^5.4.0",
     "eslint": "^4.18.1",
     "eslint-plugin-eslint-comments": "^2.0.2",
     "eslint-plugin-jest": "^21.12.2",
