@@ -10,85 +10,68 @@ npm install priorityqueue
 
 Example
 ----
-```
-import PriorityQueue from 'priorityqueue';
+```js
+import PriorityQueue from "priorityqueue";
 
-class Point{
-  constructor(x, y){
+class Point {
+  constructor(x, y) {
     this.x = x;
-	this.y = y;
+    this.y = y;
   }
 }
 
-let pq = new PriorityQueue({
-	comparator: (a, b)=>
-	  a.x !== b.x ? a.x - b.x : a.y - b.y;
-});
+const numericCompare = (a, b) => (a > b ? 1 : a < b ? -1 : 0);
 
-pq.push(new Point(4,6));
-pq.push(new Point(2,3));
-pq.push(new Point(5,1));
-pq.push(new Point(1,2));
-pq.pop() // Point{x: 5, y: 1}
-pq.top() // Point{x: 4, y: 6}
-pq.push(new Point(3,4));
-pq.push(new Point(6,5));
-pq.size() // 5
-pq.top() // Point{x: 6, y: 5}
+const comparator = (a, b) => {
+  const x = numericCompare(a.x, b.x);
+  const y = numericCompare(a.y, b.y);
+  return x ? x : y;
+};
+
+const pq = new PriorityQueue({ comparator });
+
+pq.push(new Point(4, 6));
+pq.push(new Point(2, 3));
+pq.push(new Point(5, 1));
+pq.push(new Point(1, 2));
+console.log(pq.pop()); // Point{x: 5, y: 1}
+console.log(pq.top()); // Point{x: 4, y: 6}
+pq.push(new Point(3, 4));
+pq.push(new Point(6, 5));
+console.log(pq.length); // 5
+console.log(pq.top()); // Point{x: 6, y: 5}
 ```
 
 Options
 ----
 ## PriorityQueue(options = {})
 ### options.comparator
-`options.comparator` will define an order relation of each values in PriorityQueue.
+`options.comparator` defines an order of each values in PriorityQueue.
 
-PriorityQueue with default comparator serves as numerical descending order for numeric values, or lexical descending order for string values.
+A comparator function format is in according with an argument of [`Array.prototype.sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
 
-comparator function format is in according with an argument function of `Array.prototype.sort()`. 
+⚠️ The predefined order is also the same as [`Array.prototype.sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
 
 
-### options.strategy
-- PriorityQueue.BinaryHeapStrategy (default)
-- PriorityQueue.SkewHeapStrategy
-- PriorityQueue.PairingHeapStrategy
+Variation
+----
+## BinaryHeap(default)
+## PairingHeap
+## SkewHeap
 
-All of above strategies are faster than simple implementation such that with `Array.prototype.push() / sort() & pop()`, in the sense of time complexity. 
+Import specific implementation
+----
 
-A binary heap is simple(-er than almost other) and has an in-place algorithm and low complexity.
+```js
+import PriorityQueue, {
+  BinaryHeap,
+  PairingHeap,
+  SkewHeap,
+} from "priorityqueue";
 
-A skew heap and pairing heap are also faster, but these implementation requires using "linked list" structure. Thus, a bit slow. Why these strategies exist? In case of merging queues, time complexity of two each merging is constant time. 
-
+console.log(PriorityQueue === BinaryHeap); // true;
+```
 
 API
 ----
-## new PriorityQueue(options = {})
-Returns new empty instance of `PriorityQueue`.
-
-## clear()
-Clear the instance of priority queue.
-
-## from(array)
-Fill/Build the instance with entire contents of the array.
-if some items are in the instance, these will be dereferenced.
-
-## toArray()
-Returns a copy of collection in the instance.
-
-## size()
-Returns the number of items in the instance.
-
-## push(value)
-## enqueue(value)
-Pushes the value at the instance.
-
-## top()
-## peek()
-Peeks at the top of the instance in order specified by `options.comparator`.
-
-## pop()
-## dequeue()
-Pops the top of the instance.
-
-## empty()
-Returns the instance is empty or not.
+See [API](API.md).
