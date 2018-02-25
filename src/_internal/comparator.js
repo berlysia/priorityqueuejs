@@ -11,8 +11,8 @@ export function numericGreaterFirst(a: number, b: number): ComparatorResult {
 }
 
 export function dictOrderGreaterFirst(
-  _a: Object,
-  _b: Object
+  _a: Object, // eslint-disable-line flowtype/no-weak-types
+  _b: Object // eslint-disable-line flowtype/no-weak-types
 ): ComparatorResult {
   const a = _a.toString();
   const b = _b.toString();

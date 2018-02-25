@@ -14,7 +14,7 @@ export default class PriorityQueue<T> {
     throw new Error("not implemented");
   }
   constructor({
-    comparator = (defaultComparator: Comparator<any>),
+    comparator = (defaultComparator: Comparator<T>),
   }: PriorityQueueOption<T> = {}) {
     this.comparator = comparator;
   }
