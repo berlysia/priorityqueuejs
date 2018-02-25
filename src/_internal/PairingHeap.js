@@ -27,7 +27,6 @@ function traverse<T>(node: ?Node<T>): Array<T> {
   ];
 }
 
-/** mutate first argument */
 function mergeNode<T>(a: ?Node<T>, b: ?Node<T>, comp: Comparator<T>): ?Node<T> {
   if (!a || !b) return a || b;
   if (comp(a.value, b.value) < 0) {
@@ -81,6 +80,9 @@ function mergeChildren<T>(
   return cursor;
 }
 
+/**
+ * An implementation of Pairing Heap.
+ */
 export default class PairingHeap<T> extends PriorityQueue<T> {
   root: ?Node<T> = null;
   _length: number = 0;

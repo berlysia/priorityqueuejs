@@ -38,6 +38,9 @@ function merge<T>(
   return a;
 }
 
+/**
+ * An implementation of Skew Heap.
+ */
 export default class SkewHeap<T> extends PriorityQueue<T> {
   root: ?Node<T> = null;
   _length: number = 0;

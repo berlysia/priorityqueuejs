@@ -48,6 +48,9 @@ function heapifyAll<T>(instance: BinaryHeap<T>): void {
   }
 }
 
+/**
+ * An implementation of Binary Heap.
+ */
 export default class BinaryHeap<T> extends PriorityQueue<T> {
   collection: Array<T> = [];
 

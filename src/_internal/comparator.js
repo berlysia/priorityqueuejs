@@ -1,10 +1,15 @@
 // @flow
 
+/**
+ * A signature definition of comparator.
+ * This type has same to an argument of `Array#sort`.
+ */
 export type Comparator<T> = (a: T, b: T) => ComparatorResult;
-export type ComparatorResult = Greater | Equal | Less;
-export type Greater = 1;
-export type Equal = 0;
-export type Less = -1;
+
+/**
+ * A type of comparator's result.
+ */
+export type ComparatorResult = 1 | 0 | -1 | number;
 
 export function numericGreaterFirst(a: number, b: number): ComparatorResult {
   return a > b ? 1 : a < b ? -1 : 0;
