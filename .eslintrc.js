@@ -30,6 +30,11 @@ module.exports = {
     'flowtype/no-types-missing-file-annotation': 'off',
     'flowtype/require-variable-type': 'off',
     'flowtype/require-parameter-type': ['error', { excludeArrowFunctions: 'expressionsOnly' }],
+    'flowtype/require-return-type': ['error', 'always', {
+      excludeArrowFunctions: true,
+      annotateUndefined: "always",
+      excludeMatching: [ "constructor" ]
+    }],
     'eslint-comments/disable-enable-pair': 'error',
     'eslint-comments/no-aggregating-enable': 'error',
     'eslint-comments/no-duplicate-disable': 'error',
