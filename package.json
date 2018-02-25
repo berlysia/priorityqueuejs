@@ -74,5 +74,8 @@
     "transform": {
       "^.+\\.js?$": "babel-jest"
     }
-  }
+  },
+  "files": [
+    "lib"
+  ]
 }
