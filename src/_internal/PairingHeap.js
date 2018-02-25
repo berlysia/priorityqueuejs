@@ -81,7 +81,7 @@ function mergeChildren<T>(
   return cursor;
 }
 
-class PairingHeap<T> extends PriorityQueue<T> {
+export default class PairingHeap<T> extends PriorityQueue<T> {
   root: ?Node<T> = null;
   _length: number = 0;
 
@@ -146,5 +146,3 @@ class PairingHeap<T> extends PriorityQueue<T> {
     return !this.root;
   }
 }
-
-export default PairingHeap;

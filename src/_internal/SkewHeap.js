@@ -32,7 +32,7 @@ function merge<T>(a: ?Node<T>, b: ?Node<T>, comparator: Comparator<T>) {
   return a;
 }
 
-class SkewHeap<T> extends PriorityQueue<T> {
+export default class SkewHeap<T> extends PriorityQueue<T> {
   root: ?Node<T> = null;
   _length: number = 0;
 
@@ -97,5 +97,3 @@ class SkewHeap<T> extends PriorityQueue<T> {
     return !this.root;
   }
 }
-
-export default SkewHeap;
