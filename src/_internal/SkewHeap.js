@@ -9,7 +9,7 @@ type Node<T> = {
   right: ?Node<T>,
 };
 
-function createNode<T>(value: T) {
+function createNode<T>(value: T): Node<T> {
   return {
     value,
     left: null,
@@ -17,16 +17,22 @@ function createNode<T>(value: T) {
   };
 }
 
-function traverse<T>(node: ?Node<T>) {
+function traverse<T>(node: ?Node<T>): Array<T> {
   if (!node) return [];
   return [...traverse(node.left), node.value, ...traverse(node.right)];
 }
 
-function merge<T>(a: ?Node<T>, b: ?Node<T>, comparator: Comparator<T>) {
-  if (!(a && b)) return a || b;
-  if (comparator(a.value, b.value) < 0) return merge(b, a, comparator);
+function merge<T>(
+  a: ?Node<T>,
+  b: ?Node<T>,
+  comparator: Comparator<T>
+): ?Node<T> {
+  if (!a || !b) return a || b;
+  if (comparator(a.value, b.value) < 0) {
+    return merge(b, a, comparator);
+  }
   a.right = merge(a.right, b, comparator);
-  const t: ?Node<T> = a.right;
+  const t = a.right;
   a.right = a.left;
   a.left = t;
   return a;
@@ -47,7 +53,7 @@ export default class SkewHeap<T> extends PriorityQueue<T> {
     return instance;
   }
 
-  clear() {
+  clear(): void {
     this._length = 0;
     this.root = null;
   }
@@ -93,7 +99,7 @@ export default class SkewHeap<T> extends PriorityQueue<T> {
     return traverse(this.root).sort(this.comparator);
   }
 
-  isEmpty() {
+  isEmpty(): boolean {
     return !this.root;
   }
 }
