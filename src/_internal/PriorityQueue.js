@@ -7,7 +7,7 @@ export type PriorityQueueOption<T> = {
   comparator?: Comparator<T>,
 };
 
-/* eslint-disable class-methods-use-this */
+/* eslint-disable class-methods-use-this, flowtype/require-return-type */
 export default class PriorityQueue<T> {
   comparator: Comparator<T>;
   static from(array: T[], option?: PriorityQueueOption<T>): PriorityQueue<T> {
@@ -55,4 +55,4 @@ export default class PriorityQueue<T> {
     throw new Error("not implemented");
   }
 }
-/* eslint-enable class-methods-use-this */
+/* eslint-enable class-methods-use-this, flowtype/require-return-type */
