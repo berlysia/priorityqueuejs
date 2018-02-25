@@ -42,7 +42,7 @@ function getLargestIndex<T>(
   return largestIndex;
 }
 
-function heapifyAll<T>(instance: BinaryHeap<T>) {
+function heapifyAll<T>(instance: BinaryHeap<T>): void {
   for (let i = Math.floor(instance.collection.length / 2) - 1; i >= 0; --i) {
     heapify(instance.collection, i, instance.comparator);
   }
