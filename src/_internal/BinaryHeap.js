@@ -74,10 +74,16 @@ export default class BinaryHeap<T> extends PriorityQueue<T> {
   }
 
   top(): T {
+    if (this.length === 0) {
+      throw new Error("invalid operation: top() called for empty BinaryHeap");
+    }
     return this.collection[0];
   }
 
   pop(): T {
+    if (this.length === 0) {
+      throw new Error("invalid operation: pop() called for empty BinaryHeap");
+    }
     const ret = this.collection[0];
     if (1 < this.collection.length) {
       this.collection[0] = this.collection.pop();
