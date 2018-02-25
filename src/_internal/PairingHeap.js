@@ -96,7 +96,7 @@ export default class PairingHeap<T> extends PriorityQueue<T> {
     return instance;
   }
 
-  clear() {
+  clear(): void {
     this._length = 0;
     this.root = null;
   }
@@ -142,7 +142,7 @@ export default class PairingHeap<T> extends PriorityQueue<T> {
     return traverse(this.root).sort(this.comparator);
   }
 
-  isEmpty() {
+  isEmpty(): boolean {
     return !this.root;
   }
 }
