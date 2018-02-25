@@ -1,92 +1,118 @@
-"use strict";
-import AbstructHeap from "./AbstructHeap.js";
+// @flow
+import PriorityQueue from "./PriorityQueue";
+import type { PriorityQueueOption } from "./PriorityQueue";
+import type { Comparator } from "./comparator";
 
-function _parent(i) {
-  return Math.floor(i / 2);
-}
-function _right(i) {
-  return i * 2 + 1;
-}
-function _left(i) {
-  return i * 2;
-}
+function heapify<T>(
+  collection: T[],
+  index: number,
+  comparator: Comparator<T>
+): void {
+  const largestIndex = getLargestIndex(collection, index, comparator);
 
-function heapify(arr, i, comp) {
-  const l = _left(i);
-  const r = _right(i);
-  let largest;
-
-  if (l < arr.length && comp(arr[i], arr[l]) < 0) largest = l;
-  else largest = i;
-  if (r < arr.length && comp(arr[largest], arr[r]) < 0) largest = r;
-
-  if (largest !== i) {
-    const t = arr[i];
-    arr[i] = arr[largest];
-    arr[largest] = t;
-    heapify(arr, largest, comp);
+  if (largestIndex !== index) {
+    // swap current & largest
+    const t = collection[index];
+    collection[index] = collection[largestIndex];
+    collection[largestIndex] = t;
+    heapify(collection, largestIndex, comparator);
   }
 }
 
-class BinaryHeap extends AbstructHeap {
-  constructor(comp) {
-    super(comp);
-    this.collection = [];
+function getLargestIndex<T>(
+  collection: T[],
+  index: number,
+  comparator: Comparator<T>
+): number {
+  const leftIndex = index * 2;
+  const rightIndex = index * 2 + 1;
+  let largestIndex = index;
+
+  if (
+    leftIndex < collection.length &&
+    comparator(collection[largestIndex], collection[leftIndex]) < 0
+  )
+    largestIndex = leftIndex;
+  if (
+    rightIndex < collection.length &&
+    comparator(collection[largestIndex], collection[rightIndex]) < 0
+  )
+    largestIndex = rightIndex;
+
+  return largestIndex;
+}
+
+function heapifyAll<T>(instance: BinaryHeap<T>) {
+  for (let i = Math.floor(instance.collection.length / 2) - 1; i >= 0; --i) {
+    heapify(instance.collection, i, instance.comparator);
+  }
+}
+
+export default class BinaryHeap<T> extends PriorityQueue<T> {
+  collection: Array<T> = [];
+
+  static from(
+    array: Array<T>,
+    option: PriorityQueueOption<T> = {}
+  ): BinaryHeap<T> {
+    const instance = new BinaryHeap(option);
+    instance.collection = Array.from(array);
+    heapifyAll(instance);
+    return instance;
   }
 
-  clear() {
-    this.collection = [];
+  clear(): void {
+    this.collection.length = 0;
   }
 
-  from(array) {
-    this.collection = array.slice(0);
-    for (let i = Math.floor(array.length / 2); i >= 0; --i)
-      heapify(this.collection, i, this.comp);
-    return this;
+  toArray(): Array<T> {
+    return [...this.collection].sort(this.comparator);
   }
 
-  toArray() {
-    return this.collection.sort(this.comp);
-  }
-
-  size() {
+  get length(): number {
     return this.collection.length;
   }
 
-  get length() {
-    return this.collection.length;
-  }
-
-  push(value) {
-    this.collection.push(value);
-    const arr = this.collection;
-    for (
-      let i = arr.length - 1;
-      i > 0 && this.comp(arr[_parent(i)], arr[i]) < 0;
-      i = _parent(i)
-    ) {
-      const t = arr[i];
-      arr[i] = arr[_parent(i)];
-      arr[_parent(i)] = t;
-    }
-    return this;
-  }
-
-  top() {
+  top(): ?T {
     return this.collection[0];
   }
 
-  pop() {
+  pop(): T {
     const ret = this.collection[0];
     if (1 < this.collection.length) {
       this.collection[0] = this.collection.pop();
-      heapify(this.collection, 0, this.comp);
+      heapify(this.collection, 0, this.comparator);
     } else {
       this.collection.pop();
     }
 
     return ret;
   }
-}
 
-export default BinaryHeap;
+  push(value: T): void {
+    this.collection.push(value);
+    const arr = this.collection;
+    for (
+      let i = arr.length - 1;
+      i > 0 && this.comparator(arr[Math.floor(i / 2)], arr[i]) < 0;
+      i = Math.floor(i / 2)
+    ) {
+      const t = arr[i];
+      arr[i] = arr[Math.floor(i / 2)];
+      arr[Math.floor(i / 2)] = t;
+    }
+  }
+
+  merge(other: PriorityQueue<T>): void {
+    if (other instanceof BinaryHeap) {
+      this.collection = this.collection.concat(other.collection);
+    } else {
+      this.collection = this.collection.concat(other.toArray());
+    }
+    heapifyAll(this);
+  }
+
+  isEmpty(): boolean {
+    return !this.collection.length;
+  }
+}
