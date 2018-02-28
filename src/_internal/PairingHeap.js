@@ -3,17 +3,56 @@ import PriorityQueue from "./PriorityQueue";
 import type { PriorityQueueOption } from "./PriorityQueue";
 import type { Comparator } from "./comparator";
 
+class LinkedList<T> {
+  first: ?Node<T> = null;
+  last: ?Node<T> = null;
+  pushFirst(node: Node<T>): void {
+    if (this.first) {
+      node.nextSibling = this.first;
+    } else {
+      this.last = node;
+    }
+    this.first = node;
+  }
+  pushLast(node: Node<T>): void {
+    if (this.last) {
+      this.last.nextSibling = node;
+    } else {
+      this.first = node;
+    }
+    this.last = node;
+  }
+  popFirst(): Node<T> {
+    if (!this.first) {
+      throw new Error("LinkedList: popFirst() called for empty LinkedList");
+    }
+    const ret = this.first;
+    this.first = this.first.nextSibling;
+    ret.nextSibling = null;
+    if (!this.first) {
+      this.last = null;
+    }
+    return ret;
+  }
+  hasItem(): boolean {
+    return Boolean(this.first);
+  }
+  isPairable(): boolean {
+    return this.first !== this.last;
+  }
+}
+
 type Node<T> = {
   value: T,
   nextSibling: ?Node<T>,
-  leftMostChild: ?Node<T>,
+  children: LinkedList<T>,
 };
 
 function createNode<T>(value: T): Node<T> {
   return {
     value,
     nextSibling: null,
-    leftMostChild: null,
+    children: new LinkedList(),
   };
 }
 
@@ -22,7 +61,7 @@ function traverse<T>(node: ?Node<T>): Array<T> {
 
   return [
     node.value,
-    ...traverse(node.leftMostChild),
+    ...traverse(node.children.first),
     ...traverse(node.nextSibling),
   ];
 }
@@ -30,54 +69,33 @@ function traverse<T>(node: ?Node<T>): Array<T> {
 function mergeNode<T>(a: ?Node<T>, b: ?Node<T>, comp: Comparator<T>): ?Node<T> {
   if (!a || !b) return a || b;
   if (comp(a.value, b.value) < 0) {
-    return mergeNode(b, a, comp);
+    b.children.pushFirst(a);
+    return b;
   }
-  b.nextSibling = a.leftMostChild;
-  a.leftMostChild = b;
+  a.children.pushLast(b);
   return a;
 }
 
 function mergeChildren<T>(
-  leftMostChild: ?Node<T>,
+  children: LinkedList<T>,
+  workspace: LinkedList<T>,
   comp: Comparator<T>
 ): ?Node<T> {
-  let cursor = leftMostChild;
-  let lastSibling = null;
-  let first = null;
-  let second = null;
+  if (!children.hasItem()) return null;
 
-  while (cursor) {
-    // isolate first node & move cursor
-    first = cursor;
-    cursor = first.nextSibling;
-    first.nextSibling = null;
-
-    // isolate second node & move cursor
-    second = cursor;
-    if (second) {
-      cursor = second.nextSibling;
-      second.nextSibling = null;
+  let current = children;
+  let next = workspace;
+  while (current.isPairable()) {
+    while (current.hasItem()) {
+      const x = current.popFirst();
+      const y = current.hasItem() ? current.popFirst() : null;
+      next.pushLast((mergeNode(x, y, comp): any)); // must be present
     }
-
-    // merge first pair
-    first = mergeNode(first, second, comp);
-
-    // collect merged siblings in reversed order
-    (first: any).nextSibling = lastSibling; // first is clearly present
-    lastSibling = first;
+    const tmp = current;
+    current = next;
+    next = tmp;
   }
-
-  let revCursor = null;
-  while (lastSibling) {
-    // move revCursor
-    revCursor = lastSibling;
-    lastSibling = revCursor.nextSibling;
-
-    // merge last pair
-    revCursor = mergeNode(revCursor, cursor, comp);
-    cursor = revCursor;
-  }
-  return cursor;
+  return current.popFirst();
 }
 
 /**
@@ -86,6 +104,7 @@ function mergeChildren<T>(
 export default class PairingHeap<T> extends PriorityQueue<T> {
   root: ?Node<T> = null;
   _length: number = 0;
+  _workspace: LinkedList<T> = new LinkedList();
 
   static from(
     array: Array<T>,
@@ -124,7 +143,11 @@ export default class PairingHeap<T> extends PriorityQueue<T> {
       throw new Error("invalid operation: pop() called for empty PairingHeap");
     }
     const ret = this.root.value;
-    this.root = mergeChildren(this.root.leftMostChild, this.comparator);
+    this.root = mergeChildren(
+      this.root.children,
+      this._workspace,
+      this.comparator
+    );
     this._length -= 1;
     return ret;
   }
