@@ -6,9 +6,12 @@
   "module": "lib/esm",
   "sideEffect": false,
   "scripts": {
-    "build:cjs": "cross-env NODE_ENV=commonjs babel src --out-dir lib/cjs --ignore *.test.js,testing/**",
-    "build:esm": "cross-env NODE_ENV=esmodule babel src --out-dir lib/esm --ignore *.test.js,testing/**",
+    "build:cjs": "cross-env NODE_ENV=commonjs babel src --out-dir lib/cjs --ignore *.test.js,testing/**,performance/**",
+    "build:esm": "cross-env NODE_ENV=esmodule babel src --out-dir lib/esm --ignore *.test.js,testing/**,performance/**",
     "build": "run-p build:*",
+    "perf:build": "cross-env NODE_ENV=commonjs babel src --out-dir lib/cjs",
+    "perf:exec": "node lib/cjs/_internal/performance",
+    "perf": "run-s perf:build perf:exec",
     "watch": "run-p \"build:* -- --watch\"",
     "lint": "eslint \"src/**\"",
     "typecheck": "flow",
@@ -61,7 +64,8 @@
     "npm-run-all": "^4.1.2",
     "regenerator-runtime": "^0.11.1",
     "seed-random": "^2.2.0",
-    "shuffle-array": "^1.0.1"
+    "shuffle-array": "^1.0.1",
+    "simple-statistics": "^5.2.1"
   },
   "lint-staged": {
     "*.js": [
