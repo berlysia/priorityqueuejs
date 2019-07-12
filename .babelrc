@@ -1,31 +1,31 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "modules": false
     }],
-    "stage-1",
-    "flow"
+    "@babel/preset-flow"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-export-default-from"
   ],
   "env": {
     "test": {
       "presets": [
-        ["env", { "modules": "commonjs" }],
-        "stage-1",
-        "flow"
+        ["@babel/preset-env", { "modules": "commonjs" }],
+        "@babel/preset-flow"
       ]
     },
     "esmodule": {
       "presets": [
-        ["env", { "modules": false }],
-        "stage-1",
-        "flow"
+        ["@babel/preset-env", { "modules": false }],
+        "@babel/preset-flow"
       ]
     },
     "commonjs": {
       "presets": [
-        ["env", { "modules": "commonjs" }],
-        "stage-1",
-        "flow"
+        ["@babel/preset-env", { "modules": "commonjs" }],
+        "@babel/preset-flow"
       ]
     }
   }
