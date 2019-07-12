@@ -77,7 +77,8 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
       "!**/node_modules/**",
-      "!**/testing/**"
+      "!**/testing/**",
+      "!**/performance/**"
     ],
     "transform": {
       "^.+\\.js?$": "babel-jest"
