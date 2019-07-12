@@ -1,12 +1,7 @@
-import { performance } from "perf_hooks";
+import microseconds from "microseconds";
 import { numericGreaterFirst } from "../../comparator";
 
 export default function pushPopAsc(Ctor, size) {
-  const beforePush = "beforePush";
-  const afterPush = "afterPush";
-  const beforePop = "beforePop";
-  const afterPop = "afterPop";
-
   const pq = new Ctor({
     comparator: numericGreaterFirst,
   });
@@ -17,27 +12,20 @@ export default function pushPopAsc(Ctor, size) {
   };
 
   for (let j = 100; j > 0; --j) {
-    performance.mark(beforePush);
+    const beforePush = microseconds.now();
     for (let i = 0, l = size; i < l; ++i) {
       pq.push(i);
     }
-    performance.mark(afterPush);
-    performance.measure("push", beforePush, afterPush);
-    performance.clearMarks();
+    const afterPush = microseconds.now();
+    result.push.push(afterPush - beforePush);
 
-    performance.mark(beforePop);
+    const beforePop = microseconds.now();
     for (let i = size; i > 0; --i) {
       pq.pop();
     }
-    performance.mark(afterPop);
-    performance.measure("pop", beforePop, afterPop);
-    performance.clearMarks();
+    const afterPop = microseconds.now();
+    result.pop.push(afterPop - beforePop);
     pq.clear();
-
-    result.push.push(performance.getEntriesByName("push")[0]);
-    result.pop.push(performance.getEntriesByName("pop")[0]);
-
-    performance.clearMeasures();
   }
 
   return result;

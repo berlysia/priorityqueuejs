@@ -1,4 +1,3 @@
-import { performance } from "perf_hooks";
 import * as statistics from "simple-statistics";
 import { BinaryHeap, PairingHeap, SkewHeap } from "../../";
 import operations from "./operations";
@@ -6,7 +5,6 @@ import operations from "./operations";
 const HeapCtors = [BinaryHeap, PairingHeap, SkewHeap];
 const tests = [...operations];
 
-const getDuration = x => x.duration;
 const stats = values => ({
   mean: statistics.mean(values),
   mode: statistics.mode(values),
@@ -25,15 +23,14 @@ function runBenchmarks() {
         const measures = test(Ctor, size);
         if (measures.length) {
           console.log(`\n#${size} ${test.name}:${Ctor.name}`);
-          console.log(stats(measures.map(getDuration)));
+          console.log(stats(measures));
         } else {
           const keys = Object.keys(measures);
           for (const key of keys) {
             console.log(`\n#${size} ${key}:${test.name}:${Ctor.name}`);
-            console.log(stats(measures[key].map(getDuration)));
+            console.log(stats(measures[key]));
           }
         }
-        performance.clearMeasures();
       }
     }
   }
