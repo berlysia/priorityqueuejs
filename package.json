@@ -65,7 +65,8 @@
     "regenerator-runtime": "^0.11.1",
     "seed-random": "^2.2.0",
     "shuffle-array": "^1.0.1",
-    "simple-statistics": "^5.2.1"
+    "simple-statistics": "^5.2.1",
+    "yargs": "^13.2.4"
   },
   "lint-staged": {
     "*.js": [
@@ -81,7 +82,10 @@
       "!**/testing/**",
       "!**/performance/**"
     ],
-    "testPathIgnorePatterns": ["/node_modules/", "/lib"],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/lib"
+    ],
     "transform": {
       "^.+\\.js?$": "babel-jest"
     }
