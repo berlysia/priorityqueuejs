@@ -68,9 +68,15 @@
     "simple-statistics": "^5.2.1",
     "yargs": "^13.2.4"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.js": [
-      "npm run lint"
+      "npm run lint",
+      "npm test"
     ]
   },
   "jest": {
