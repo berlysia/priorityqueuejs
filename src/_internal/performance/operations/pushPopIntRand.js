@@ -2,7 +2,7 @@ import microseconds from "microseconds";
 import { numericGreaterFirst } from "../../comparator";
 import { createNumericRandomSequence } from "../../testing/utils";
 
-export default function pushPopRand(Ctor, size) {
+export default function pushPopIntRand(Ctor, size) {
   const pq = new Ctor({
     comparator: numericGreaterFirst,
   });
@@ -13,7 +13,7 @@ export default function pushPopRand(Ctor, size) {
   };
 
   for (let j = 100; j > 0; --j) {
-    const sequence = createNumericRandomSequence({ size });
+    const sequence = createNumericRandomSequence({ size }).map(Math.floor);
     const beforePush = microseconds.now();
     for (const i of sequence) {
       pq.push(i);

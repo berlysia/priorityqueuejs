@@ -1,7 +1,7 @@
 import microseconds from "microseconds";
 import { numericGreaterFirst } from "../../comparator";
 
-export default function pushPopAsc(Ctor, size) {
+export default function pushPopIntSorted(Ctor, size) {
   const pq = new Ctor({
     comparator: numericGreaterFirst,
   });
@@ -13,7 +13,7 @@ export default function pushPopAsc(Ctor, size) {
 
   for (let j = 100; j > 0; --j) {
     const beforePush = microseconds.now();
-    for (let i = 0, l = size; i < l; ++i) {
+    for (let i = size; i > 0; --i) {
       pq.push(i);
     }
     const afterPush = microseconds.now();
