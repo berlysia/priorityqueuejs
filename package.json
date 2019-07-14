@@ -76,11 +76,12 @@
     "collectCoverage": true,
     "coverageDirectory": "<rootDir>/coverage",
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
+      "src/**/*.js",
       "!**/node_modules/**",
       "!**/testing/**",
       "!**/performance/**"
     ],
+    "testPathIgnorePatterns": ["/node_modules/", "/lib"],
     "transform": {
       "^.+\\.js?$": "babel-jest"
     }
