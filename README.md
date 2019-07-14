@@ -56,8 +56,25 @@ A comparator function format is in according with an argument of [`Array.prototy
 Variation
 ----
 ## BinaryHeap(default)
+Binary heap is a simple and efficient in almost cases.
+
+cons:
+- slow with large amount of items(over 10k)
+- slow in `merge` operation especially
+
 ## PairingHeap
+
+pros:
+- super fast in `merge` operation(constant time)
+- stable in the same order values
+
 ## SkewHeap
+
+pros:
+- super fast in `merge` operation(constant time)
+
+Not to use:
+- with sequence completely sorted
 
 Import specific implementation
 ----
