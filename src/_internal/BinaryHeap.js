@@ -101,14 +101,15 @@ export default class BinaryHeap<T> extends PriorityQueue<T> {
   push(value: T): void {
     this.collection.push(value);
     const arr = this.collection;
+
     for (
-      let i = arr.length - 1;
-      i > 0 && this.comparator(arr[Math.floor(i / 2)], arr[i]) < 0;
-      i = Math.floor(i / 2)
+      let i = arr.length - 1, parent = Math.floor(i / 2);
+      i > 0 && this.comparator(arr[parent], arr[i]) < 0;
+      i = parent, parent = Math.floor(parent / 2)
     ) {
       const t = arr[i];
-      arr[i] = arr[Math.floor(i / 2)];
-      arr[Math.floor(i / 2)] = t;
+      arr[i] = arr[parent];
+      arr[parent] = t;
     }
   }
 
