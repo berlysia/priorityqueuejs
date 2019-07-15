@@ -1,23 +1,6 @@
-// @flow
-import PriorityQueue from "./PriorityQueue";
-import type { PriorityQueueOption } from "./PriorityQueue";
-import type { Comparator } from "./comparator";
+import { PriorityQueue, PriorityQueueOption } from "./PriorityQueue";
 
-function heapify<T>(
-  collection: T[],
-  index: number,
-  comparator: Comparator<T>
-): void {
-  const largestIndex = getLargestIndex(collection, index, comparator);
-
-  if (largestIndex !== index) {
-    // swap current & largest
-    const t = collection[index];
-    collection[index] = collection[largestIndex];
-    collection[largestIndex] = t;
-    heapify(collection, largestIndex, comparator);
-  }
-}
+import { Comparator } from "./comparator";
 
 function getLargestIndex<T>(
   collection: T[],
@@ -42,6 +25,22 @@ function getLargestIndex<T>(
   return largestIndex;
 }
 
+function heapify<T>(
+  collection: T[],
+  index: number,
+  comparator: Comparator<T>
+): void {
+  const largestIndex = getLargestIndex(collection, index, comparator);
+
+  if (largestIndex !== index) {
+    // swap current & largest
+    const t = collection[index];
+    collection[index] = collection[largestIndex];
+    collection[largestIndex] = t;
+    heapify(collection, largestIndex, comparator);
+  }
+}
+
 function heapifyAll<T>(instance: BinaryHeap<T>): void {
   for (let i = Math.floor(instance.collection.length / 2) - 1; i >= 0; --i) {
     heapify(instance.collection, i, instance.comparator);
@@ -51,13 +50,13 @@ function heapifyAll<T>(instance: BinaryHeap<T>): void {
 /**
  * An implementation of Binary Heap.
  */
-export default class BinaryHeap<T> extends PriorityQueue<T> {
-  collection: Array<T> = [];
+export class BinaryHeap<T> extends PriorityQueue<T> {
+  collection: T[] = [];
 
-  static from(
-    array: Array<T>,
-    option: PriorityQueueOption<T> = {}
-  ): BinaryHeap<T> {
+  static from<U>(
+    array: U[],
+    option: PriorityQueueOption<U> = {}
+  ): BinaryHeap<U> {
     const instance = new BinaryHeap(option);
     instance.collection = Array.from(array);
     heapifyAll(instance);
@@ -68,7 +67,7 @@ export default class BinaryHeap<T> extends PriorityQueue<T> {
     this.collection.length = 0;
   }
 
-  toArray(): Array<T> {
+  toArray(): T[] {
     return [...this.collection].sort(this.comparator);
   }
 
@@ -88,8 +87,8 @@ export default class BinaryHeap<T> extends PriorityQueue<T> {
       throw new Error("invalid operation: pop() called for empty BinaryHeap");
     }
     const ret = this.collection[0];
-    if (1 < this.collection.length) {
-      this.collection[0] = this.collection.pop();
+    if (this.collection.length > 1) {
+      this.collection[0] = this.collection.pop()!;
       heapify(this.collection, 0, this.comparator);
     } else {
       this.collection.pop();

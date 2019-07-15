@@ -1,17 +1,15 @@
-// @flow
-
-import type PriorityQueue, { PriorityQueueOption } from "../PriorityQueue";
+import { PriorityQueue, PriorityQueueOption } from "../PriorityQueue";
 
 type CustomObject = {
-  value: number,
+  value: number;
 };
 
-export default function stability({
+export default function stability<Ctor extends typeof PriorityQueue>({
   PriorityQueueCtor,
   option,
 }: {
-  PriorityQueueCtor: Class<PriorityQueue<CustomObject>>,
-  option: PriorityQueueOption<CustomObject>,
+  PriorityQueueCtor: Ctor;
+  option: PriorityQueueOption<CustomObject>;
 }): void {
   const given = Array(10)
     .fill(5)
@@ -24,5 +22,5 @@ export default function stability({
   for (let i = 0, l = given.length; i < l; ++i) {
     actual[i] = pq.pop();
   }
-  expect(actual).toEqual(given);
+  expect(actual).toStrictEqual(given);
 }

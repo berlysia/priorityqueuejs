@@ -1,5 +1,3 @@
-// @flow
-
 /**
  * A signature definition of comparator.
  * This type has same to an argument of `Array#sort`.
@@ -15,10 +13,7 @@ export function numericGreaterFirst(a: number, b: number): ComparatorResult {
   return a > b ? 1 : a < b ? -1 : 0;
 }
 
-export function dictOrderGreaterFirst(
-  _a: Object, // eslint-disable-line flowtype/no-weak-types
-  _b: Object // eslint-disable-line flowtype/no-weak-types
-): ComparatorResult {
+export function dictOrderGreaterFirst(_a: {}, _b: {}): ComparatorResult {
   const a = _a.toString();
   const b = _b.toString();
   return a > b ? 1 : a < b ? -1 : 0;

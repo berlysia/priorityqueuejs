@@ -1,12 +1,11 @@
-// @flow
-import PriorityQueue from "./PriorityQueue";
-import type { PriorityQueueOption } from "./PriorityQueue";
-import type { Comparator } from "./comparator";
+import { PriorityQueue, PriorityQueueOption } from "./PriorityQueue";
+
+import { Comparator } from "./comparator";
 
 type Node<T> = {
-  value: T,
-  nextSibling: ?Node<T>,
-  firstChild: ?Node<T>,
+  value: T;
+  nextSibling: Node<T> | null;
+  firstChild: Node<T> | null;
 };
 
 function createNode<T>(value: T): Node<T> {
@@ -17,7 +16,7 @@ function createNode<T>(value: T): Node<T> {
   };
 }
 
-function traverse<T>(node: ?Node<T>): Array<T> {
+function traverse<T>(node: Node<T> | null): T[] {
   if (!node) return [];
 
   return [
@@ -28,7 +27,11 @@ function traverse<T>(node: ?Node<T>): Array<T> {
 }
 
 /** mutate first argument */
-function mergeNode<T>(a: ?Node<T>, b: ?Node<T>, comp: Comparator<T>): ?Node<T> {
+function mergeNode<T>(
+  a: Node<T> | null,
+  b: Node<T> | null,
+  comp: Comparator<T>
+): Node<T> | null {
   if (!a || !b) return a || b;
   if (comp(a.value, b.value) < 0) {
     return mergeNode(b, a, comp);
@@ -38,7 +41,10 @@ function mergeNode<T>(a: ?Node<T>, b: ?Node<T>, comp: Comparator<T>): ?Node<T> {
   return a;
 }
 
-function mergeChildren<T>(firstChild: ?Node<T>, comp: Comparator<T>): ?Node<T> {
+function mergeChildren<T>(
+  firstChild: Node<T> | null,
+  comp: Comparator<T>
+): Node<T> | null {
   let cursor = firstChild;
   let lastSibling = null;
   let first = null;
@@ -61,7 +67,7 @@ function mergeChildren<T>(firstChild: ?Node<T>, comp: Comparator<T>): ?Node<T> {
     first = mergeNode(first, second, comp);
 
     // collect merged siblings in reversed order
-    (first: any).nextSibling = lastSibling; // first is clearly present
+    first!.nextSibling = lastSibling; // first is clearly present
     lastSibling = first;
   }
 
@@ -78,14 +84,16 @@ function mergeChildren<T>(firstChild: ?Node<T>, comp: Comparator<T>): ?Node<T> {
   return cursor;
 }
 
-export default class PairingHeap<T> extends PriorityQueue<T> {
-  root: ?Node<T> = null;
+export class PairingHeap<T> extends PriorityQueue<T> {
+  root: Node<T> | null = null;
+
+  // eslint-disable-next-line @typescript-eslint/member-naming
   _length: number = 0;
 
-  static from(
-    array: Array<T>,
-    option: PriorityQueueOption<T> = {}
-  ): PairingHeap<T> {
+  static from<U>(
+    array: U[],
+    option: PriorityQueueOption<U> = {}
+  ): PairingHeap<U> {
     const instance = new PairingHeap(option);
     for (let i = 0, l = array.length; i < l; ++i) {
       instance.push(array[i]);
@@ -135,7 +143,7 @@ export default class PairingHeap<T> extends PriorityQueue<T> {
     }
   }
 
-  toArray(): Array<T> {
+  toArray(): T[] {
     return traverse(this.root).sort(this.comparator);
   }
 

@@ -1,6 +1,8 @@
-import * as builder from "yargs";
+/* eslint-disable max-depth */
+import builder from "yargs";
+// eslint-disable-next-line import/no-namespace
 import * as statistics from "simple-statistics";
-import { BinaryHeap, PairingHeap, SkewHeap } from "../../";
+import { BinaryHeap, PairingHeap, SkewHeap } from "../..";
 import operations from "./operations";
 
 const { testCase, algorithm } = builder
@@ -18,7 +20,7 @@ const { testCase, algorithm } = builder
 const HeapCtors = [BinaryHeap, PairingHeap, SkewHeap];
 const tests = [...operations];
 
-const stats = values => ({
+const stats = (values: number[]) => ({
   mean: statistics.mean(values),
   mode: statistics.mode(values),
   median: statistics.median(values),
@@ -29,7 +31,7 @@ const stats = values => ({
 
 const sizes = [100, 1000, 10000];
 
-function runBenchmarks(ctorRegex, nameRegex) {
+function runBenchmarks(ctorRegex?: RegExp, nameRegex?: RegExp) {
   for (const test of tests) {
     if (nameRegex && !nameRegex.test(test.name)) continue;
     for (const Ctor of HeapCtors) {
@@ -51,7 +53,11 @@ function runBenchmarks(ctorRegex, nameRegex) {
   }
 }
 
-const nameRegex = testCase && new RegExp(testCase);
-const ctorRegex = algorithm && new RegExp(algorithm);
+const nameRegex =
+  typeof testCase === "string" && testCase ? new RegExp(testCase) : undefined;
+const ctorRegex =
+  typeof algorithm === "string" && algorithm
+    ? new RegExp(algorithm)
+    : undefined;
 
 runBenchmarks(ctorRegex, nameRegex);

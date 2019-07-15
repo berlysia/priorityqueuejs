@@ -1,12 +1,11 @@
-// @flow
-import PriorityQueue from "./PriorityQueue";
-import type { PriorityQueueOption } from "./PriorityQueue";
-import type { Comparator } from "./comparator";
+import { PriorityQueue, PriorityQueueOption } from "./PriorityQueue";
+
+import { Comparator } from "./comparator";
 
 type Node<T> = {
-  value: T,
-  left: ?Node<T>,
-  right: ?Node<T>,
+  value: T;
+  left: Node<T> | null;
+  right: Node<T> | null;
 };
 
 function createNode<T>(value: T): Node<T> {
@@ -17,16 +16,16 @@ function createNode<T>(value: T): Node<T> {
   };
 }
 
-function traverse<T>(node: ?Node<T>): Array<T> {
+function traverse<T>(node: Node<T> | null): T[] {
   if (!node) return [];
   return [...traverse(node.left), node.value, ...traverse(node.right)];
 }
 
 function merge<T>(
-  a: ?Node<T>,
-  b: ?Node<T>,
+  a: Node<T> | null,
+  b: Node<T> | null,
   comparator: Comparator<T>
-): ?Node<T> {
+): Node<T> | null {
   if (!a || !b) return a || b;
   if (comparator(a.value, b.value) < 0) {
     return merge(b, a, comparator);
@@ -41,14 +40,13 @@ function merge<T>(
 /**
  * An implementation of Skew Heap.
  */
-export default class SkewHeap<T> extends PriorityQueue<T> {
-  root: ?Node<T> = null;
+export class SkewHeap<T> extends PriorityQueue<T> {
+  root: Node<T> | null = null;
+
+  // eslint-disable-next-line @typescript-eslint/member-naming
   _length: number = 0;
 
-  static from(
-    array: Array<T>,
-    option: PriorityQueueOption<T> = {}
-  ): SkewHeap<T> {
+  static from<U>(array: U[], option: PriorityQueueOption<U> = {}): SkewHeap<U> {
     const instance = new SkewHeap(option);
     for (let i = 0, l = array.length; i < l; ++i) {
       instance.push(array[i]);
@@ -98,7 +96,7 @@ export default class SkewHeap<T> extends PriorityQueue<T> {
     }
   }
 
-  toArray(): Array<T> {
+  toArray(): T[] {
     return traverse(this.root).sort(this.comparator);
   }
 

@@ -1,19 +1,25 @@
 import microseconds from "microseconds";
 import { numericGreaterFirst } from "../../comparator";
+import { createNumericRandomSequence } from "../../testing/utils";
+import { PriorityQueue } from "../../PriorityQueue";
 
-export default function pushPopIntSorted(Ctor, size) {
-  const pq = new Ctor({
+export default function pushPopNumRand<Ctor extends typeof PriorityQueue>(
+  PriorityQueueCtor: Ctor,
+  size: number
+) {
+  const pq = new PriorityQueueCtor({
     comparator: numericGreaterFirst,
   });
 
   const result = {
-    push: [],
-    pop: [],
+    push: [] as number[],
+    pop: [] as number[],
   };
 
   for (let j = 100; j > 0; --j) {
+    const sequence = createNumericRandomSequence({ size });
     const beforePush = microseconds.now();
-    for (let i = size; i > 0; --i) {
+    for (const i of sequence) {
       pq.push(i);
     }
     const afterPush = microseconds.now();

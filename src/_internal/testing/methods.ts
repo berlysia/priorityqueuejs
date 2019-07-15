@@ -1,19 +1,17 @@
-// @flow
-
-import type PriorityQueue from "../PriorityQueue";
+import { PriorityQueue } from "../PriorityQueue";
 import { numericGreaterFirst } from "../comparator";
 import {
   createNumericSequentialSequence,
   createNumericRandomSequence,
 } from "./utils";
 
-export default function general({
+export default function general<Ctor extends typeof PriorityQueue>({
   PriorityQueueCtor,
 }: {
-  PriorityQueueCtor: Class<PriorityQueue<*>>,
+  PriorityQueueCtor: Ctor;
 }): void {
   test(`${PriorityQueueCtor.name}: static from`, () => {
-    const values: Array<number> = createNumericSequentialSequence({
+    const values: number[] = createNumericSequentialSequence({
       size: 100,
     });
     const expected = [...values].sort(numericGreaterFirst);
@@ -24,11 +22,11 @@ export default function general({
     for (let i = values.length - 1; i >= 0; --i) {
       actual[i] = pq.pop();
     }
-    expect(actual).toEqual(expected);
+    expect(actual).toStrictEqual(expected);
   });
 
   test(`${PriorityQueueCtor.name}: clear`, () => {
-    const values: Array<number> = createNumericSequentialSequence({ size: 3 });
+    const values: number[] = createNumericSequentialSequence({ size: 3 });
     const pq: PriorityQueue<number> = new PriorityQueueCtor({
       comparator: numericGreaterFirst,
     });
@@ -36,11 +34,11 @@ export default function general({
       pq.push(v);
     }
     pq.clear();
-    expect(pq.length).toEqual(0);
+    expect(pq).toHaveLength(0);
   });
 
   test(`${PriorityQueueCtor.name}: toArray`, () => {
-    const values: Array<number> = createNumericSequentialSequence({ size: 10 });
+    const values: number[] = createNumericSequentialSequence({ size: 10 });
     const expected = [...values].sort(numericGreaterFirst);
     const pq: PriorityQueue<number> = new PriorityQueueCtor({
       comparator: numericGreaterFirst,
@@ -48,7 +46,7 @@ export default function general({
     for (const v of values) {
       pq.push(v);
     }
-    expect(pq.toArray()).toEqual(expected);
+    expect(pq.toArray()).toStrictEqual(expected);
   });
 
   test(`${PriorityQueueCtor.name}: get length`, () => {
@@ -56,13 +54,13 @@ export default function general({
       comparator: numericGreaterFirst,
     });
 
-    expect(pq.length).toBe(0);
+    expect(pq).toHaveLength(0);
     pq.push(123);
-    expect(pq.length).toBe(1);
+    expect(pq).toHaveLength(1);
     pq.push(123);
-    expect(pq.length).toBe(2);
+    expect(pq).toHaveLength(2);
     pq.push(123);
-    expect(pq.length).toBe(3);
+    expect(pq).toHaveLength(3);
   });
 
   test(`${PriorityQueueCtor.name}: isEmpty`, () => {
@@ -70,17 +68,17 @@ export default function general({
       comparator: numericGreaterFirst,
     });
 
-    expect(pq.isEmpty()).toBeTruthy();
+    expect(pq.isEmpty()).toBe(true);
     pq.push(123);
-    expect(pq.isEmpty()).toBeFalsy();
+    expect(pq.isEmpty()).toBe(false);
   });
 
   test(`${PriorityQueueCtor.name}: merge`, () => {
-    const aValues: Array<number> = createNumericRandomSequence({
+    const aValues: number[] = createNumericRandomSequence({
       size: 10,
       seed: "aValues",
     });
-    const bValues: Array<number> = createNumericRandomSequence({
+    const bValues: number[] = createNumericRandomSequence({
       size: 10,
       seed: "bValues",
     });
@@ -105,6 +103,6 @@ export default function general({
     for (let i = valueLength - 1; i >= 0; --i) {
       actual[i] = a.pop();
     }
-    expect(actual).toEqual(expected);
+    expect(actual).toStrictEqual(expected);
   });
 }

@@ -1,15 +1,13 @@
-// @flow
+import { PriorityQueue, PriorityQueueOption } from "../PriorityQueue";
 
-import type PriorityQueue, { PriorityQueueOption } from "../PriorityQueue";
-
-export default function general<T>({
+export default function general<T, Ctor extends typeof PriorityQueue>({
   PriorityQueueCtor,
   option,
   sequence,
 }: {
-  PriorityQueueCtor: Class<PriorityQueue<T>>,
-  option: PriorityQueueOption<T>,
-  sequence: Array<T>,
+  PriorityQueueCtor: Ctor;
+  option: PriorityQueueOption<T>;
+  sequence: T[];
 }): void {
   const expected = [...sequence].sort(option.comparator);
   const actual = Array(sequence.length);
@@ -20,5 +18,5 @@ export default function general<T>({
   for (let i = sequence.length - 1; i >= 0; --i) {
     actual[i] = pq.pop();
   }
-  expect(actual).toEqual(expected);
+  expect(actual).toStrictEqual(expected);
 }

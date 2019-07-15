@@ -1,26 +1,26 @@
-// @flow
-
-import { defaultComparator } from "./comparator";
-import type { Comparator } from "./comparator";
+/* eslint-disable class-methods-use-this */
+import { defaultComparator, Comparator } from "./comparator";
 
 /**
  * Option structure of Priority Queue.
  */
 export type PriorityQueueOption<T> = {
-  comparator?: Comparator<T>,
+  comparator?: Comparator<T>;
 };
 
-/* eslint-disable class-methods-use-this, flowtype/require-return-type */
 /**
  * An Abstract class of Priority Queue.
  */
-export default class PriorityQueue<T> {
+export class PriorityQueue<T> {
   comparator: Comparator<T>;
 
   /**
    * Build priority queue from given array.
    */
-  static from(array: T[], option?: PriorityQueueOption<T>): PriorityQueue<T> {
+  static from<U>(
+    _array: U[],
+    _option?: PriorityQueueOption<U>
+  ): PriorityQueue<U> {
     throw new Error("not implemented");
   }
 
@@ -30,9 +30,7 @@ export default class PriorityQueue<T> {
    * Like this: (a, b) => (a == b ? 0 : (a < b ? -1 : 1));
    * If not, default function will be passed by PriorityQueue entrypoint.
    */
-  constructor({
-    comparator = (defaultComparator: Comparator<any>),
-  }: PriorityQueueOption<T> = {}) {
+  constructor({ comparator = defaultComparator }: PriorityQueueOption<T> = {}) {
     this.comparator = comparator;
   }
 
@@ -46,7 +44,7 @@ export default class PriorityQueue<T> {
   /**
    * Write out the priority queue content as an Array.
    */
-  toArray(): Array<T> {
+  toArray(): T[] {
     throw new Error("not implemented");
   }
 
@@ -60,7 +58,7 @@ export default class PriorityQueue<T> {
   /**
    * Push the element to the priority queue and returns self.
    */
-  push(value: T): void {
+  push(_value: T): void {
     throw new Error("not implemented");
   }
 
@@ -91,6 +89,7 @@ export default class PriorityQueue<T> {
   pop(): T {
     throw new Error("not implemented");
   }
+
   /**
    * Dequeue the top element of the priority queue. Alias of pop().
    */
@@ -101,7 +100,7 @@ export default class PriorityQueue<T> {
   /**
    * Merge another priority queue into this.
    */
-  merge(other: PriorityQueue<T>): void {
+  merge(_other: PriorityQueue<T>): void {
     throw new Error("not implemented");
   }
 
@@ -112,4 +111,3 @@ export default class PriorityQueue<T> {
     throw new Error("not implemented");
   }
 }
-/* eslint-enable class-methods-use-this, flowtype/require-return-type */

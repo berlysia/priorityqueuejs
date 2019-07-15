@@ -1,5 +1,6 @@
 import { numericGreaterFirst, dictOrderGreaterFirst } from "../comparator";
 
+import { PriorityQueue } from "../PriorityQueue";
 import {
   createNumericSequentialSequence,
   createNumericShuffledSequence,
@@ -9,7 +10,13 @@ import {
 import pushPop from "./pushPop";
 import methods from "./methods";
 
-export default function testSuite({ PriorityQueueCtor, size = 100 }: * = {}) {
+export default function testSuite<Ctor extends typeof PriorityQueue>({
+  PriorityQueueCtor,
+  size = 100,
+}: {
+  PriorityQueueCtor: Ctor;
+  size: number;
+}) {
   methods({ PriorityQueueCtor });
 
   test(`${PriorityQueueCtor.name}: numeric sequencial ${size} item`, () => {
@@ -42,9 +49,7 @@ export default function testSuite({ PriorityQueueCtor, size = 100 }: * = {}) {
     });
   });
 
-  test(`${
-    PriorityQueueCtor.name
-  }: numeric sequencial ${size} item by dict order`, () => {
+  test(`${PriorityQueueCtor.name}: numeric sequencial ${size} item by dict order`, () => {
     pushPop({
       PriorityQueueCtor,
       option: {
@@ -54,9 +59,7 @@ export default function testSuite({ PriorityQueueCtor, size = 100 }: * = {}) {
     });
   });
 
-  test(`${
-    PriorityQueueCtor.name
-  }: numeric shuffled ${size} item by dict order`, () => {
+  test(`${PriorityQueueCtor.name}: numeric shuffled ${size} item by dict order`, () => {
     pushPop({
       PriorityQueueCtor,
       option: {
@@ -66,9 +69,7 @@ export default function testSuite({ PriorityQueueCtor, size = 100 }: * = {}) {
     });
   });
 
-  test(`${
-    PriorityQueueCtor.name
-  }: numeric random ${size} item by dict order`, () => {
+  test(`${PriorityQueueCtor.name}: numeric random ${size} item by dict order`, () => {
     pushPop({
       PriorityQueueCtor,
       option: {
@@ -79,7 +80,10 @@ export default function testSuite({ PriorityQueueCtor, size = 100 }: * = {}) {
   });
 
   test(`${PriorityQueueCtor.name}: custom object ${size} item`, () => {
-    const comparator = (a, b) => {
+    const comparator = (
+      a: { x: number; y: number },
+      b: { x: number; y: number }
+    ) => {
       const x = numericGreaterFirst(a.x, b.x);
       if (x) return x;
       const y = numericGreaterFirst(a.y, b.y);

@@ -6,15 +6,17 @@
   "module": "lib/esm",
   "sideEffect": false,
   "scripts": {
-    "build:cjs": "cross-env NODE_ENV=commonjs babel src --out-dir lib/cjs --ignore *.test.js,testing/**,performance/**",
-    "build:esm": "cross-env NODE_ENV=esmodule babel src --out-dir lib/esm --ignore *.test.js,testing/**,performance/**",
-    "build": "run-p build:*",
-    "perf:build": "cross-env NODE_ENV=commonjs babel src --out-dir lib/cjs",
+    "build:cjs": "cross-env NODE_ENV=commonjs babel src --extensions .ts --ignore *.test.ts,**/testing/**/*,**/performance/**/* --out-dir lib/cjs",
+    "build:esm": "cross-env NODE_ENV=esmodule babel src --extensions .ts --ignore *.test.ts,**/testing/**/*,**/performance/**/* --out-dir lib/esm",
+    "build:type:cjs": "tsc -p tsconfig.json --emitDeclarationOnly --outDir lib/cjs",
+    "build:type:esm": "tsc -p tsconfig.json --emitDeclarationOnly --outDir lib/esm",
+    "build": "run-s clean build:* build:type:*",
+    "perf:build": "cross-env NODE_ENV=commonjs babel src --out-dir lib/cjs --extensions .ts",
     "perf:exec": "node lib/cjs/_internal/performance",
     "perf": "run-s clean perf:build perf:exec",
     "watch": "run-p \"build:* -- --watch\"",
     "lint": "eslint \"src/**\"",
-    "typecheck": "flow",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
     "prepublish": "run-s clean build",
     "clean": "rm -rf lib/*",
     "test": "cross-env NODE_ENV=test jest",
@@ -45,27 +47,31 @@
     "@babel/plugin-proposal-class-properties": "^7.5.0",
     "@babel/plugin-proposal-export-default-from": "^7.5.2",
     "@babel/preset-env": "^7.5.4",
-    "@babel/preset-flow": "^7.0.0",
-    "@berlysia/eslint-config": "^0.1.0",
-    "codecov": "^3.0.0",
-    "conventional-changelog-cli": "^1.3.14",
+    "@babel/preset-typescript": "^7.3.3",
+    "@berlysia/eslint-config": "^0.5.4",
+    "@berlysia/tsconfig": "0.0.1",
+    "@types/babel__core": "^7.1.2",
+    "@types/eslint": "^4.16.6",
+    "@types/lodash.range": "^3.2.6",
+    "@types/prettier": "^1.16.4",
+    "@types/seed-random": "^2.2.0",
+    "@types/shuffle-array": "^1.0.26-alpha",
+    "@types/yargs": "^13.0.0",
+    "codecov": "^3.5.0",
+    "conventional-changelog-cli": "^1.3.22",
     "cross-env": "^5.1.3",
-    "documentation": "^5.4.0",
-    "eslint": "^4.18.1",
-    "eslint-plugin-eslint-comments": "^2.0.2",
-    "eslint-plugin-jest": "^21.12.2",
-    "flow-bin": "^0.66.0",
-    "flow-typed": "^2.3.0",
+    "eslint": "^6.0.1",
     "husky": "^0.14.3",
-    "jest": "^22.4.4",
+    "jest": "^24.8.0",
     "lint-staged": "^7.3.0",
     "lodash.range": "^3.2.0",
     "microseconds": "^0.1.0",
     "npm-run-all": "^4.1.2",
-    "regenerator-runtime": "^0.11.1",
+    "prettier": "^1.18.2",
     "seed-random": "^2.2.0",
     "shuffle-array": "^1.0.1",
     "simple-statistics": "^5.2.1",
+    "typescript": "^3.5.3",
     "yargs": "^13.2.4"
   },
   "husky": {
@@ -74,16 +80,15 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "npm run lint",
-      "npm test"
+    "*.ts": [
+      "npm run lint"
     ]
   },
   "jest": {
     "collectCoverage": true,
     "coverageDirectory": "<rootDir>/coverage",
     "collectCoverageFrom": [
-      "src/**/*.js",
+      "src/**/*.ts",
       "!**/node_modules/**",
       "!**/testing/**",
       "!**/performance/**"
@@ -91,10 +96,7 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/lib"
-    ],
-    "transform": {
-      "^.+\\.js?$": "babel-jest"
-    }
+    ]
   },
   "files": [
     "lib"
