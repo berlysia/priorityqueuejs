@@ -17,7 +17,7 @@
     "watch": "run-p \"build:* -- --watch\"",
     "lint": "eslint \"src/**\"",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "prepublish": "run-s clean build",
+    "prepublishOnly": "run-s clean build",
     "clean": "rm -rf lib/*",
     "test": "cross-env NODE_ENV=test jest",
     "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file --release-count 1 --append",
