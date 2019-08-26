@@ -15,6 +15,7 @@ export default function stability<Ctor extends typeof PriorityQueue>({
     .fill(5)
     .map((value, index) => ({ value, index }));
   const actual = Array(10);
+  // @ts-ignore
   const pq = new PriorityQueueCtor(option);
   for (const v of given) {
     pq.push(v);

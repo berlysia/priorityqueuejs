@@ -11,7 +11,7 @@ export type PriorityQueueOption<T> = {
 /**
  * An Abstract class of Priority Queue.
  */
-export class PriorityQueue<T> {
+export abstract class PriorityQueue<T> {
   comparator: Comparator<T>;
 
   /**

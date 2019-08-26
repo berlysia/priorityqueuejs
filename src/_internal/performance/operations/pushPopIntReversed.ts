@@ -6,6 +6,7 @@ export default function pushPopIntReversed<Ctor extends typeof PriorityQueue>(
   PriorityQueueCtor: Ctor,
   size: number
 ) {
+  // @ts-ignore
   const pq = new PriorityQueueCtor({
     comparator: numericGreaterFirst,
   });
