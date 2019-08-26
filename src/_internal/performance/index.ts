@@ -1,4 +1,8 @@
 /* eslint-disable max-depth */
+import fs from "fs";
+import path from "path";
+import pkgDir from "pkg-dir";
+import mkdirp from "mkdirp";
 import builder from "yargs";
 // eslint-disable-next-line import/no-namespace
 import * as statistics from "simple-statistics";
@@ -30,6 +34,9 @@ const stats = (values: number[]) => ({
 });
 
 const sizes = [100, 1000, 10000];
+const iterations = 10000;
+const rootDir = pkgDir.sync();
+mkdirp.sync(path.join(rootDir!, "perf_results"));
 
 function runBenchmarks(ctorRegex?: RegExp, nameRegex?: RegExp) {
   for (const test of tests) {
@@ -37,15 +44,31 @@ function runBenchmarks(ctorRegex?: RegExp, nameRegex?: RegExp) {
     for (const Ctor of HeapCtors) {
       if (ctorRegex && !ctorRegex.test(Ctor.name)) continue;
       for (const size of sizes) {
-        const measures = test(Ctor, size);
+        const measures = test(Ctor, size, iterations);
         if (measures.length) {
-          console.log(`\n#${size} ${test.name}:${Ctor.name}`);
-          console.log(stats(measures));
+          const result = stats(measures);
+          fs.writeFileSync(
+            path.join(
+              rootDir!,
+              "perf_results",
+              `${Ctor.name}-${test.name}-${size}.json`
+            ),
+            JSON.stringify(result, null, 2),
+            "utf-8"
+          );
         } else {
           const keys = Object.keys(measures);
           for (const key of keys) {
-            console.log(`\n#${size} ${key}:${test.name}:${Ctor.name}`);
-            console.log(stats(measures[key]));
+            const result = stats(measures[key]);
+            fs.writeFileSync(
+              path.join(
+                rootDir!,
+                "perf_results",
+                `${Ctor.name}-${test.name}-${key}-${size}.json`
+              ),
+              JSON.stringify(result, null, 2),
+              "utf-8"
+            );
           }
         }
       }

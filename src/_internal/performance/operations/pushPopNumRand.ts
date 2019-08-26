@@ -5,7 +5,8 @@ import { PriorityQueue } from "../../PriorityQueue";
 
 export default function pushPopNumRand<Ctor extends typeof PriorityQueue>(
   PriorityQueueCtor: Ctor,
-  size: number
+  size: number,
+  iterations: number
 ) {
   // @ts-ignore
   const pq = new PriorityQueueCtor({
@@ -17,7 +18,7 @@ export default function pushPopNumRand<Ctor extends typeof PriorityQueue>(
     pop: [] as number[],
   };
 
-  for (let j = 100; j > 0; --j) {
+  for (let j = iterations; j > 0; --j) {
     const sequence = createNumericRandomSequence({ size });
     const beforePush = microseconds.now();
     for (const i of sequence) {
