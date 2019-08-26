@@ -4,7 +4,8 @@ import { PriorityQueue } from "../../PriorityQueue";
 
 export default function pushPopIntReversed<Ctor extends typeof PriorityQueue>(
   PriorityQueueCtor: Ctor,
-  size: number
+  size: number,
+  iterations: number
 ) {
   // @ts-ignore
   const pq = new PriorityQueueCtor({
@@ -16,7 +17,7 @@ export default function pushPopIntReversed<Ctor extends typeof PriorityQueue>(
     pop: [] as number[],
   };
 
-  for (let j = 100; j > 0; --j) {
+  for (let j = iterations; j > 0; --j) {
     const beforePush = microseconds.now();
     for (let i = 0, l = size; i < l; ++i) {
       pq.push(i);

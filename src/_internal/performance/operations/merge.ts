@@ -4,10 +4,11 @@ import { PriorityQueue } from "../../PriorityQueue";
 
 export default function merge<Ctor extends typeof PriorityQueue>(
   PriorityQueueCtor: Ctor,
-  size: number
+  size: number,
+  iterations: number
 ) {
   const result = [];
-  for (let i = 100; i > 0; --i) {
+  for (let i = iterations; i > 0; --i) {
     const a = PriorityQueueCtor.from(
       Array.from({ length: size }, (_x, j) => j),
       {
