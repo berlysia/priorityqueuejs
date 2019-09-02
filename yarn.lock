@@ -714,10 +714,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@berlysia/eslint-config@^0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@berlysia/eslint-config/-/eslint-config-0.5.4.tgz#d2c357cd5d04d3ae8a22bb68da39987d4507cf77"
-  integrity sha512-+dsrF+v1riLXTe/zgyvB6MAONyLG5qA4iirGc9AjjmsdEPqFMbT0ugzlVF7b3reGbL4LJ0wah6IMljqEM1TuKw==
+"@berlysia/eslint-config@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@berlysia/eslint-config/-/eslint-config-0.6.1.tgz#f8889ffd4175c8b215a28c33c974209f12788b5f"
+  integrity sha512-618vILOrtN+WonTEO/BcvrfdgYL/Fas/ZxwawA6t75rcxeNFs/SxXp4/Die728FP53fMTae7mNsngPfjzvkgnQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^1.12.0"
     "@typescript-eslint/parser" "^1.12.0"
