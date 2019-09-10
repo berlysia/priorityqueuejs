@@ -95,6 +95,8 @@
     "coverageDirectory": "<rootDir>/coverage",
     "collectCoverageFrom": [
       "src/**/*.ts",
+      "!src/PriorityQueue.ts",
+      "!src/index.ts",
       "!**/node_modules/**",
       "!**/testing/**",
       "!**/performance/**"
