@@ -1,6 +1,6 @@
-import { BinaryHeap as _BinaryHeap } from "./_internal/BinaryHeap";
+import { BinaryHeap as _BinaryHeap } from "./BinaryHeap";
 
-export { PairingHeap } from "./_internal/PairingHeap";
-export { SkewHeap } from "./_internal/SkewHeap";
+export { PairingHeap } from "./PairingHeap";
+export { SkewHeap } from "./SkewHeap";
 export const BinaryHeap = _BinaryHeap;
 export default BinaryHeap;
