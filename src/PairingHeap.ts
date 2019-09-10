@@ -136,11 +136,13 @@ export class PairingHeap<T> extends PriorityQueue<T> {
     if (other instanceof PairingHeap && this.comparator === other.comparator) {
       this.root = mergeNode(this.root, other.root, this.comparator);
       this._length += other.length;
+      other.clear();
       return;
     }
     for (let i = 0, a = other.toArray(), l = a.length; i < l; ++i) {
       this.push(a[i]);
     }
+    other.clear();
   }
 
   toArray(): T[] {

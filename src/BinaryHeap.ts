@@ -119,6 +119,7 @@ export class BinaryHeap<T> extends PriorityQueue<T> {
       this.collection = this.collection.concat(other.toArray());
     }
     heapifyAll(this);
+    other.clear();
   }
 
   isEmpty(): boolean {
