@@ -6,8 +6,8 @@ import mkdirp from "mkdirp";
 import builder from "yargs";
 // eslint-disable-next-line import/no-namespace
 import * as statistics from "simple-statistics";
-import { BinaryHeap, PairingHeap, SkewHeap } from "../..";
 import operations from "./operations";
+import { BinaryHeap, PairingHeap, SkewHeap } from "..";
 
 const { testCase, algorithm } = builder
   .option("t", {
