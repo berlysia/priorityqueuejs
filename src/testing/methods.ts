@@ -111,4 +111,44 @@ export default function general<Ctor extends typeof PriorityQueue>({
     }
     expect(actual).toStrictEqual(expected);
   });
+
+  describe(`${PriorityQueueCtor.name}: top`, () => {
+    it("throws for empty", () => {
+      // @ts-ignore
+      const q = new PriorityQueueCtor();
+      expect(() => q.top()).toThrow();
+    });
+
+    it("returns the first item", () => {
+      // @ts-ignore
+      const q: PriorityQueue<number> = new PriorityQueueCtor({
+        comparator: numericGreaterFirst,
+      });
+      q.push(2);
+      q.push(3);
+      q.push(1);
+      expect(q.top()).toBe(3);
+      expect(q).toHaveLength(3);
+    });
+  });
+
+  describe(`${PriorityQueueCtor.name}: pop`, () => {
+    it("throws for empty", () => {
+      // @ts-ignore
+      const q = new PriorityQueueCtor();
+      expect(() => q.pop()).toThrow();
+    });
+
+    it("returns the first item", () => {
+      // @ts-ignore
+      const q: PriorityQueue<number> = new PriorityQueueCtor({
+        comparator: numericGreaterFirst,
+      });
+      q.push(2);
+      q.push(3);
+      q.push(1);
+      expect(q.pop()).toBe(3);
+      expect(q).toHaveLength(2);
+    });
+  });
 }
