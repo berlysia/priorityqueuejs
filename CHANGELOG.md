@@ -66,3 +66,38 @@ PriorityQueue === BinaryHeap; // true
 
 
 
+# [1.0.0-rc2](https://github.com/berlysia/priorityqueuejs/compare/v1.0.0-rc1...v1.0.0-rc2) (2019-09-15)
+
+
+### Bug Fixes
+
+* move global declaration file ([594907f](https://github.com/berlysia/priorityqueuejs/commit/594907f))
+* suppress eslint rule ([e816c2d](https://github.com/berlysia/priorityqueuejs/commit/e816c2d))
+
+
+### Code Refactoring
+
+* **PairingHeap:** improve performance ([bef6e79](https://github.com/berlysia/priorityqueuejs/commit/bef6e79))
+
+
+### Features
+
+* clear after merge ([c7ce527](https://github.com/berlysia/priorityqueuejs/commit/c7ce527))
+* now PairingHeap has stable order ([76719e7](https://github.com/berlysia/priorityqueuejs/commit/76719e7))
+
+
+### Performance Improvements
+
+* add filter ([60c3997](https://github.com/berlysia/priorityqueuejs/commit/60c3997))
+* add simple performance mesurement codes ([34fa5fa](https://github.com/berlysia/priorityqueuejs/commit/34fa5fa))
+* rewrite perf ([d92e147](https://github.com/berlysia/priorityqueuejs/commit/d92e147))
+* separate perf case for Integer or Number ([19c4ea7](https://github.com/berlysia/priorityqueuejs/commit/19c4ea7))
+* store results as files ([bd61d7c](https://github.com/berlysia/priorityqueuejs/commit/bd61d7c))
+
+
+### BREAKING CHANGES
+
+* **PairingHeap:** stability has gone
+
+
+
