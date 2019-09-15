@@ -1,0 +1,10 @@
+{
+  "out": "docs",
+  "mode": "modules",
+  "exclude": [
+    "**/performance/**/*",
+    "**/testing/**/*",
+    "**/__tests__/**/*",
+    "**/**/*.test.ts"
+  ]
+}
