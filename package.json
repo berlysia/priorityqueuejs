@@ -80,7 +80,7 @@
     "simple-statistics": "7.0.5",
     "typedoc": "0.15.0",
     "typescript": "3.6.3",
-    "yargs": "13.3.0"
+    "yargs": "14.0.0"
   },
   "husky": {
     "hooks": {
