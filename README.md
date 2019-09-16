@@ -34,12 +34,12 @@ pq.push(new Point(4, 6));
 pq.push(new Point(2, 3));
 pq.push(new Point(5, 1));
 pq.push(new Point(1, 2));
-console.log(pq.pop()); // Point{x: 5, y: 1}
-console.log(pq.top()); // Point{x: 4, y: 6}
+console.log(pq.pop()); // => {x: 5, y: 1}
+console.log(pq.top()); // => {x: 4, y: 6}
 pq.push(new Point(3, 4));
 pq.push(new Point(6, 5));
-console.log(pq.length); // 5
-console.log(pq.top()); // Point{x: 6, y: 5}
+console.log(pq.length); // => 5
+console.log(pq.top()); // => {x: 6, y: 5}
 ```
 
 ## Options
@@ -90,5 +90,5 @@ import PriorityQueue, {
   SkewHeap,
 } from "priorityqueue";
 
-console.log(PriorityQueue === BinaryHeap); // true;
+console.log(PriorityQueue === BinaryHeap); // => true
 ```
