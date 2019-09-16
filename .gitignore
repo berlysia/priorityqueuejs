@@ -4,3 +4,4 @@ node_modules
 coverage
 perf_results
 docs
+*.log
