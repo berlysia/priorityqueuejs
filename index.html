@@ -98,12 +98,12 @@ pq.push(<span class="hljs-keyword">new</span> Point(<span class="hljs-number">4<
 pq.push(<span class="hljs-keyword">new</span> Point(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>));
 pq.push(<span class="hljs-keyword">new</span> Point(<span class="hljs-number">5</span>, <span class="hljs-number">1</span>));
 pq.push(<span class="hljs-keyword">new</span> Point(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>));
-<span class="hljs-built_in">console</span>.log(pq.pop()); <span class="hljs-comment">// Point{x: 5, y: 1}</span>
-<span class="hljs-built_in">console</span>.log(pq.top()); <span class="hljs-comment">// Point{x: 4, y: 6}</span>
+<span class="hljs-built_in">console</span>.log(pq.pop()); <span class="hljs-comment">// =&gt; {x: 5, y: 1}</span>
+<span class="hljs-built_in">console</span>.log(pq.top()); <span class="hljs-comment">// =&gt; {x: 4, y: 6}</span>
 pq.push(<span class="hljs-keyword">new</span> Point(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>));
 pq.push(<span class="hljs-keyword">new</span> Point(<span class="hljs-number">6</span>, <span class="hljs-number">5</span>));
-<span class="hljs-built_in">console</span>.log(pq.length); <span class="hljs-comment">// 5</span>
-<span class="hljs-built_in">console</span>.log(pq.top()); <span class="hljs-comment">// Point{x: 6, y: 5}</span></code></pre>
+<span class="hljs-built_in">console</span>.log(pq.length); <span class="hljs-comment">// =&gt; 5</span>
+<span class="hljs-built_in">console</span>.log(pq.top()); <span class="hljs-comment">// =&gt; {x: 6, y: 5}</span></code></pre>
 				<a href="#options" id="options" style="color: inherit; text-decoration: none;">
 					<h2>Options</h2>
 				</a>
@@ -134,7 +134,6 @@ pq.push(<span class="hljs-keyword">new</span> Point(<span class="hljs-number">6<
 				<p>pros:</p>
 				<ul>
 					<li>super fast in <code>merge</code> operation(constant time)</li>
-					<li>stable in the same order values</li>
 				</ul>
 				<a href="#skewheap" id="skewheap" style="color: inherit; text-decoration: none;">
 					<h2>SkewHeap</h2>
@@ -156,11 +155,7 @@ pq.push(<span class="hljs-keyword">new</span> Point(<span class="hljs-number">6<
   SkewHeap,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">"priorityqueue"</span>;
 
-<span class="hljs-built_in">console</span>.log(PriorityQueue === BinaryHeap); <span class="hljs-comment">// true;</span></code></pre>
-				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
-					<h2>API</h2>
-				</a>
-				<p>See <a href="API.md">API</a>.</p>
+<span class="hljs-built_in">console</span>.log(PriorityQueue === BinaryHeap); <span class="hljs-comment">// =&gt; true</span></code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
