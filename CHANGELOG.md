@@ -101,3 +101,7 @@ PriorityQueue === BinaryHeap; // true
 
 
 
+# [1.0.0-rc3](https://github.com/berlysia/priorityqueuejs/compare/v1.0.0-rc2...v1.0.0-rc3) (2019-09-16)
+
+
+

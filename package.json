@@ -1,6 +1,6 @@
 {
   "name": "priorityqueue",
-  "version": "1.0.0-rc2",
+  "version": "1.0.0-rc3",
   "description": "An implementation of Priority Queue",
   "main": "lib/cjs",
   "module": "lib/esm",
