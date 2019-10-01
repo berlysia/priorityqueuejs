@@ -3,6 +3,5 @@
   "compilerOptions": {
     "target": "es2015",
     "esModuleInterop": false
-  },
-  "exclude": ["**/*.test.ts"]
+  }
 }
