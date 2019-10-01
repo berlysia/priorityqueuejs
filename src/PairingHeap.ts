@@ -88,7 +88,7 @@ export class PairingHeap<T> extends PriorityQueue<T> {
   root: Node<T> | null = null;
 
   // eslint-disable-next-line @typescript-eslint/member-naming
-  _length: number = 0;
+  _length = 0;
 
   static from<U>(
     array: U[],
