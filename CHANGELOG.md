@@ -105,3 +105,12 @@ PriorityQueue === BinaryHeap; // true
 
 
 
+# [1.0.0-rc3.0](https://github.com/berlysia/priorityqueuejs/compare/v1.0.0-rc3...v1.0.0-rc3.0) (2019-10-02)
+
+
+### Bug Fixes
+
+* fix for lint ([986bc34](https://github.com/berlysia/priorityqueuejs/commit/986bc34))
+
+
+
