@@ -890,10 +890,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@berlysia/eslint-config@0.8.3":
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/@berlysia/eslint-config/-/eslint-config-0.8.3.tgz#f037bfdfe4c1166b04da2f7f8272341b79363488"
-  integrity sha512-2wX/46xwO0PFBoKS1Bvu07Id9r7cI89s82uKw8aY4Vby0/8yjKLwVms/WMlKOdAXLZiUhv/gzE0mUagXc775dg==
+"@berlysia/eslint-config@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@berlysia/eslint-config/-/eslint-config-1.1.0.tgz#968fdf9ce08edf56dbdb9fe3e146133e8287838e"
+  integrity sha512-GVw4nd+L3RbmTdz73uBFoGUOdmgl+sfJEYOkDvGU2k0GCf4q6YhqF37N825LT7ssZJtm7WSME8Hs3WO6bV+xRA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.0.0"
     "@typescript-eslint/parser" "^2.0.0"
