@@ -1,6 +1,9 @@
 module.exports = {
+  env: {
+    "jest/globals": true,
+  },
   rules: {
     "jest/no-export": "off",
-    "jest/require-tothrow-message": "off",
+    "jest/valid-describe": "off",
   },
 };
