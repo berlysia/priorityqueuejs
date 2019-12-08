@@ -43,11 +43,11 @@
     "data structure"
   ],
   "devDependencies": {
-    "@babel/cli": "7.7.4",
-    "@babel/core": "7.7.4",
+    "@babel/cli": "7.7.5",
+    "@babel/core": "7.7.5",
     "@babel/plugin-proposal-class-properties": "7.7.4",
     "@babel/plugin-proposal-export-default-from": "7.7.4",
-    "@babel/preset-env": "7.7.4",
+    "@babel/preset-env": "7.7.6",
     "@babel/preset-typescript": "7.7.4",
     "@berlysia/eslint-config": "1.2.0",
     "@berlysia/tsconfig": "0.0.1",
@@ -81,7 +81,7 @@
     "shuffle-array": "1.0.1",
     "simple-statistics": "7.0.7",
     "typedoc": "0.15.3",
-    "typescript": "3.7.2",
+    "typescript": "3.7.3",
     "yargs": "15.0.2"
   },
   "husky": {
