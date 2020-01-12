@@ -62,7 +62,7 @@
     "@types/prettier": "1.19.0",
     "@types/seed-random": "2.2.0",
     "@types/shuffle-array": "0.0.28",
-    "@types/yargs": "13.0.4",
+    "@types/yargs": "15.0.0",
     "codecov": "3.6.1",
     "conventional-changelog-cli": "2.0.31",
     "cross-env": "6.0.3",
