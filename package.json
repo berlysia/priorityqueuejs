@@ -70,7 +70,7 @@
     "gh-pages": "2.2.0",
     "husky": "3.1.0",
     "jest": "25.1.0",
-    "lint-staged": "9.5.0",
+    "lint-staged": "10.0.7",
     "lodash.range": "3.2.0",
     "microseconds": "0.2.0",
     "mkdirp": "1.0.3",
