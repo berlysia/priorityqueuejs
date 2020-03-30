@@ -19,7 +19,7 @@ export default function pushPopIntRand<Ctor extends typeof PriorityQueue>(
   };
 
   for (let j = iterations; j > 0; --j) {
-    const sequence = createNumericRandomSequence({ size }).map(x =>
+    const sequence = createNumericRandomSequence({ size }).map((x) =>
       Math.floor(x)
     );
     const beforePush = microseconds.now();
