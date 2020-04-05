@@ -59,7 +59,7 @@
     "@types/lodash.range": "3.2.6",
     "@types/mkdirp": "1.0.0",
     "@types/node": "12.12.21",
-    "@types/prettier": "1.19.1",
+    "@types/prettier": "2.0.0",
     "@types/seed-random": "2.2.0",
     "@types/shuffle-array": "0.0.28",
     "@types/yargs": "15.0.4",
