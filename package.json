@@ -61,7 +61,7 @@
     "@types/node": "12.12.21",
     "@types/prettier": "2.0.1",
     "@types/seed-random": "2.2.0",
-    "@types/shuffle-array": "0.0.28",
+    "@types/shuffle-array": "1.0.0",
     "@types/yargs": "15.0.5",
     "codecov": "3.7.0",
     "conventional-changelog-cli": "2.0.34",
