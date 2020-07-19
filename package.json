@@ -43,8 +43,8 @@
     "data structure"
   ],
   "devDependencies": {
-    "@babel/cli": "7.10.4",
-    "@babel/core": "7.10.4",
+    "@babel/cli": "7.10.5",
+    "@babel/core": "7.10.5",
     "@babel/plugin-proposal-class-properties": "7.10.4",
     "@babel/plugin-proposal-export-default-from": "7.10.4",
     "@babel/preset-env": "7.10.4",
@@ -55,7 +55,7 @@
     "@power-doctest/tester": "5.2.2",
     "@types/babel__core": "7.1.9",
     "@types/eslint": "7.2.0",
-    "@types/jest": "26.0.4",
+    "@types/jest": "26.0.5",
     "@types/lodash.range": "3.2.6",
     "@types/mkdirp": "1.0.1",
     "@types/node": "12.12.21",
@@ -63,7 +63,7 @@
     "@types/seed-random": "2.2.0",
     "@types/shuffle-array": "1.0.0",
     "@types/yargs": "15.0.5",
-    "codecov": "3.7.0",
+    "codecov": "3.7.1",
     "conventional-changelog-cli": "2.0.34",
     "cross-env": "7.0.2",
     "eslint": "6.8.0",
@@ -81,7 +81,7 @@
     "shuffle-array": "1.0.1",
     "simple-statistics": "7.1.0",
     "typedoc": "0.17.8",
-    "typescript": "3.9.6",
+    "typescript": "3.9.7",
     "yargs": "15.4.1"
   },
   "husky": {
