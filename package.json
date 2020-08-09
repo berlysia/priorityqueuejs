@@ -44,7 +44,7 @@
   ],
   "devDependencies": {
     "@babel/cli": "7.10.5",
-    "@babel/core": "7.11.0",
+    "@babel/core": "7.11.1",
     "@babel/plugin-proposal-class-properties": "7.10.4",
     "@babel/plugin-proposal-export-default-from": "7.10.4",
     "@babel/preset-env": "7.11.0",
@@ -55,7 +55,7 @@
     "@power-doctest/tester": "5.2.2",
     "@types/babel__core": "7.1.9",
     "@types/eslint": "7.2.0",
-    "@types/jest": "26.0.8",
+    "@types/jest": "26.0.9",
     "@types/lodash.range": "3.2.6",
     "@types/mkdirp": "1.0.1",
     "@types/node": "12.12.21",
@@ -80,7 +80,7 @@
     "seed-random": "2.2.0",
     "shuffle-array": "1.0.1",
     "simple-statistics": "7.1.0",
-    "typedoc": "0.17.8",
+    "typedoc": "0.18.0",
     "typescript": "3.9.7",
     "yargs": "15.4.1"
   },
