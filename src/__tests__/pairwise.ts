@@ -9,13 +9,11 @@ for (const A of Ctors) {
   for (const B of Ctors) {
     describe(`${A.name} vs ${B.name}`, () => {
       it("mergable if have same comparator", () => {
-        // @ts-ignore
         const a = new A({ comparator: numericGreaterFirst });
         a.push(1);
         a.push(3);
         a.push(5);
 
-        // @ts-ignore
         const b = new B({ comparator: numericGreaterFirst });
         b.push(2);
         b.push(4);
@@ -32,13 +30,11 @@ for (const A of Ctors) {
       });
 
       it("mergable even if have different comparator", () => {
-        // @ts-ignore
         const a = new A({ comparator: dictOrderGreaterFirst });
         a.push(1);
         a.push(10);
         a.push(100);
 
-        // @ts-ignore
         const b = new B({ comparator: numericGreaterFirst });
         b.push(2);
         b.push(20);
@@ -47,6 +43,7 @@ for (const A of Ctors) {
         expect(a.toArray()).toStrictEqual([1, 10, 100]);
         expect(b.toArray()).toStrictEqual([2, 20, 200]);
 
+        // @ts-expect-error
         a.merge(b);
 
         expect(a.toArray()).toStrictEqual([1, 10, 100, 2, 20, 200]);

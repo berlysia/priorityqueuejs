@@ -1,6 +1,7 @@
-import { PriorityQueue, PriorityQueueOption } from "./PriorityQueue";
+import type { PriorityQueueOption } from "./PriorityQueue";
+import { PriorityQueue } from "./PriorityQueue";
 
-import { Comparator } from "./comparator";
+import type { Comparator } from "./comparator";
 
 function getLargestIndex<T>(
   collection: T[],

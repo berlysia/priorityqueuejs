@@ -1,6 +1,7 @@
-import { PriorityQueue, PriorityQueueOption } from "./PriorityQueue";
+import type { PriorityQueueOption } from "./PriorityQueue";
+import { PriorityQueue } from "./PriorityQueue";
 
-import { Comparator } from "./comparator";
+import type { Comparator } from "./comparator";
 
 type Node<T> = {
   value: T;
@@ -43,7 +44,6 @@ function merge<T>(
 export class SkewHeap<T> extends PriorityQueue<T> {
   root: Node<T> | null = null;
 
-  // eslint-disable-next-line @typescript-eslint/member-naming
   _length = 0;
 
   static from<U>(array: U[], option: PriorityQueueOption<U> = {}): SkewHeap<U> {

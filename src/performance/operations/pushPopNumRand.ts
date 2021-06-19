@@ -1,14 +1,14 @@
 import microseconds from "microseconds";
 import { numericGreaterFirst } from "../../comparator";
 import { createNumericRandomSequence } from "../../testing/utils";
-import { PriorityQueue } from "../../PriorityQueue";
+import type { PriorityQueue } from "../../PriorityQueue";
 
 export default function pushPopNumRand<Ctor extends typeof PriorityQueue>(
   PriorityQueueCtor: Ctor,
   size: number,
   iterations: number
 ) {
-  // @ts-ignore
+  // @ts-expect-error
   const pq = new PriorityQueueCtor({
     comparator: numericGreaterFirst,
   });
