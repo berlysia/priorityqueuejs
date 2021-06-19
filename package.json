@@ -49,7 +49,7 @@
     "@babel/plugin-proposal-export-default-from": "7.12.1",
     "@babel/preset-env": "7.12.1",
     "@babel/preset-typescript": "7.12.1",
-    "@berlysia/eslint-config": "1.2.2",
+    "@berlysia/eslint-config": "2.1.1",
     "@berlysia/tsconfig": "0.0.1",
     "@power-doctest/markdown": "5.2.0",
     "@power-doctest/tester": "5.2.2",
