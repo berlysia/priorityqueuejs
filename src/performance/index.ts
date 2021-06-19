@@ -1,25 +1,24 @@
-/* eslint-disable max-depth */
 import fs from "fs";
 import path from "path";
 import pkgDir from "pkg-dir";
 import mkdirp from "mkdirp";
 import builder from "yargs";
-// eslint-disable-next-line import/no-namespace
 import * as statistics from "simple-statistics";
-import operations from "./operations";
 import { BinaryHeap, PairingHeap, SkewHeap } from "..";
+import operations from "./operations";
 
 const { testCase, algorithm } = builder
-  .option("t", {
-    alias: "testCase",
+  .option("testCase", {
+    alias: "t",
     describe: "filter by test case name",
     type: "string",
   })
-  .option("a", {
-    alias: "algorithm",
+  .option("algorithm", {
+    alias: "a",
     describe: "filter by algorithm name",
     type: "string",
-  }).argv;
+  })
+  .parseSync();
 
 const HeapCtors = [BinaryHeap, PairingHeap, SkewHeap];
 const tests = [...operations];

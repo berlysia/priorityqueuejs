@@ -1,4 +1,4 @@
-import { PriorityQueue, PriorityQueueOption } from "../PriorityQueue";
+import type { PriorityQueue, PriorityQueueOption } from "../PriorityQueue";
 
 type CustomObject = {
   value: number;
@@ -15,7 +15,7 @@ export default function stability<Ctor extends typeof PriorityQueue>({
     .fill(5)
     .map((value, index) => ({ value, index }));
   const actual = Array(10);
-  // @ts-ignore
+  // @ts-expect-error
   const pq = new PriorityQueueCtor(option);
   for (const v of given) {
     pq.push(v);

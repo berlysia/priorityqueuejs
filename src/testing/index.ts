@@ -1,6 +1,6 @@
 import { numericGreaterFirst, dictOrderGreaterFirst } from "../comparator";
 
-import { PriorityQueue } from "../PriorityQueue";
+import type { PriorityQueue } from "../PriorityQueue";
 import {
   createNumericSequentialSequence,
   createNumericShuffledSequence,

@@ -1,5 +1,5 @@
-/* eslint-disable class-methods-use-this */
-import { defaultComparator, Comparator } from "./comparator";
+import type { Comparator } from "./comparator";
+import { defaultComparator } from "./comparator";
 
 /**
  * Option structure of Priority Queue.

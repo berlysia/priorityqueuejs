@@ -1,13 +1,13 @@
 import microseconds from "microseconds";
 import { numericGreaterFirst } from "../../comparator";
-import { PriorityQueue } from "../../PriorityQueue";
+import type { PriorityQueue } from "../../PriorityQueue";
 
 export default function pushPopNumReversed<Ctor extends typeof PriorityQueue>(
   PriorityQueueCtor: Ctor,
   size: number,
   iterations: number
 ) {
-  // @ts-ignore
+  // @ts-expect-error
   const pq = new PriorityQueueCtor({
     comparator: numericGreaterFirst,
   });
