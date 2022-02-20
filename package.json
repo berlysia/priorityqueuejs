@@ -59,7 +59,7 @@
     "@types/jest": "27.4.0",
     "@types/lodash.range": "3.2.6",
     "@types/mkdirp": "1.0.2",
-    "@types/node": "16.11.24",
+    "@types/node": "16.11.25",
     "@types/prettier": "2.4.4",
     "@types/seed-random": "2.2.1",
     "@types/shuffle-array": "1.0.2",
