@@ -14,16 +14,16 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12, 14, 16]
+        node-version: ["lts/*"]
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: yarn install --frozen-lockfile --check-files
-      env:
-        CI: true
-    - run: yarn ci
-      env:
-        CI: true
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install --frozen-lockfile --check-files
+        env:
+          CI: true
+      - run: yarn ci
+        env:
+          CI: true
