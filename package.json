@@ -67,7 +67,7 @@
     "codecov": "3.8.3",
     "conventional-changelog-cli": "2.2.2",
     "cross-env": "7.0.3",
-    "eslint": "8.15.0",
+    "eslint": "8.17.0",
     "gh-pages": "3.2.3",
     "husky": "7.0.4",
     "jest": "27.5.1",
