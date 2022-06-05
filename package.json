@@ -56,7 +56,7 @@
     "@power-doctest/tester": "5.3.2",
     "@types/babel__core": "7.1.19",
     "@types/eslint": "8.4.2",
-    "@types/jest": "27.5.2",
+    "@types/jest": "28.1.1",
     "@types/lodash.range": "3.2.7",
     "@types/mkdirp": "1.0.2",
     "@types/node": "16.11.38",
