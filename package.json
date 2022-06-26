@@ -81,7 +81,7 @@
     "seed-random": "2.2.0",
     "shuffle-array": "1.0.1",
     "simple-statistics": "7.7.5",
-    "typedoc": "0.22.17",
+    "typedoc": "0.23.1",
     "typescript": "4.7.4",
     "yargs": "17.5.1"
   },
