@@ -1,7 +1,12 @@
-import type { PriorityQueueOption } from "./AbstractPriorityQueue";
-import { AbstractPriorityQueue } from "./AbstractPriorityQueue";
+import { BasePriorityQueue } from "./PriorityQueue";
+import type {
+  PriorityQueueInstance,
+  PriorityQueueOption,
+  PriorityQueueStatic,
+} from "./PriorityQueue";
 
 import type { Comparator } from "./comparator";
+import { defaultComparator } from "./comparator";
 
 function getLargestIndex<T>(
   collection: T[],
@@ -51,7 +56,11 @@ function heapifyAll<T>(instance: BinaryHeap<T>): void {
 /**
  * An implementation of Binary Heap.
  */
-export class BinaryHeap<T> extends AbstractPriorityQueue<T> {
+export class BinaryHeap<T>
+  extends BasePriorityQueue
+  implements PriorityQueueInstance<T>
+{
+  comparator: Comparator<T>;
   collection: T[] = [];
 
   static from<U>(
@@ -62,6 +71,11 @@ export class BinaryHeap<T> extends AbstractPriorityQueue<T> {
     instance.collection = Array.from(array);
     heapifyAll(instance);
     return instance;
+  }
+
+  constructor({ comparator = defaultComparator }: PriorityQueueOption<T> = {}) {
+    super("BinaryHeap");
+    this.comparator = comparator;
   }
 
   clear(): void {
@@ -113,7 +127,7 @@ export class BinaryHeap<T> extends AbstractPriorityQueue<T> {
     }
   }
 
-  merge(other: AbstractPriorityQueue<T>): void {
+  merge<Instance extends PriorityQueueInstance<T>>(other: Instance): void {
     if (other instanceof BinaryHeap) {
       this.collection = this.collection.concat(other.collection);
     } else {
@@ -126,4 +140,9 @@ export class BinaryHeap<T> extends AbstractPriorityQueue<T> {
   isEmpty(): boolean {
     return !this.collection.length;
   }
+}
+
+const check: PriorityQueueStatic = BinaryHeap;
+if (check === BinaryHeap) {
+  // noop
 }

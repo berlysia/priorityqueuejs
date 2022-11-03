@@ -1,7 +1,11 @@
-import type { PriorityQueueOption } from "./AbstractPriorityQueue";
-import { AbstractPriorityQueue } from "./AbstractPriorityQueue";
-
 import type { Comparator } from "./comparator";
+import { defaultComparator } from "./comparator";
+import type {
+  PriorityQueueInstance,
+  PriorityQueueOption,
+  PriorityQueueStatic,
+} from "./PriorityQueue";
+import { BasePriorityQueue } from "./PriorityQueue";
 
 type Node<T> = {
   value: T;
@@ -41,17 +45,26 @@ function merge<T>(
 /**
  * An implementation of Skew Heap.
  */
-export class SkewHeap<T> extends AbstractPriorityQueue<T> {
+export class SkewHeap<T>
+  extends BasePriorityQueue
+  implements PriorityQueueInstance<T>
+{
+  comparator: Comparator<T>;
   root: Node<T> | null = null;
 
   _length = 0;
 
   static from<U>(array: U[], option: PriorityQueueOption<U> = {}): SkewHeap<U> {
-    const instance = new SkewHeap(option);
+    const instance = new SkewHeap<U>(option);
     for (let i = 0, l = array.length; i < l; ++i) {
       instance.push(array[i]);
     }
     return instance;
+  }
+
+  constructor({ comparator = defaultComparator }: PriorityQueueOption<T> = {}) {
+    super("SkewHeap");
+    this.comparator = comparator;
   }
 
   clear(): void {
@@ -85,7 +98,7 @@ export class SkewHeap<T> extends AbstractPriorityQueue<T> {
     return ret;
   }
 
-  merge(other: AbstractPriorityQueue<T>): void {
+  merge<Instance extends PriorityQueueInstance<T>>(other: Instance): void {
     if (other instanceof SkewHeap && this.comparator === other.comparator) {
       this.root = merge(this.root, other.root, this.comparator);
       this._length += other.length;
@@ -105,4 +118,8 @@ export class SkewHeap<T> extends AbstractPriorityQueue<T> {
   isEmpty(): boolean {
     return !this.root;
   }
+}
+const check: PriorityQueueStatic = SkewHeap;
+if (check === SkewHeap) {
+  // noop
 }

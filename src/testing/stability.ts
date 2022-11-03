@@ -1,14 +1,14 @@
 import { expect } from "vitest";
 import type {
-  AbstractPriorityQueue,
+  PriorityQueueStatic,
   PriorityQueueOption,
-} from "../AbstractPriorityQueue";
+} from "../PriorityQueue";
 
 type CustomObject = {
   value: number;
 };
 
-export default function stability<Ctor extends typeof AbstractPriorityQueue>({
+export default function stability<Ctor extends PriorityQueueStatic>({
   PriorityQueueCtor,
   option,
 }: {
@@ -19,7 +19,6 @@ export default function stability<Ctor extends typeof AbstractPriorityQueue>({
     .fill(5)
     .map((value, index) => ({ value, index }));
   const actual = Array(10);
-  // @ts-expect-error
   const pq = new PriorityQueueCtor(option);
   for (const v of given) {
     pq.push(v);

@@ -1,7 +1,12 @@
-import type { PriorityQueueOption } from "./AbstractPriorityQueue";
-import { AbstractPriorityQueue } from "./AbstractPriorityQueue";
+import type {
+  PriorityQueueInstance,
+  PriorityQueueOption,
+  PriorityQueueStatic,
+} from "./PriorityQueue";
+import { BasePriorityQueue } from "./PriorityQueue";
 
 import type { Comparator } from "./comparator";
+import { defaultComparator } from "./comparator";
 
 type Node<T> = {
   value: T;
@@ -85,7 +90,11 @@ function mergeChildren<T>(
   return cursor;
 }
 
-export class PairingHeap<T> extends AbstractPriorityQueue<T> {
+export class PairingHeap<T>
+  extends BasePriorityQueue
+  implements PriorityQueueInstance<T>
+{
+  comparator: Comparator<T>;
   root: Node<T> | null = null;
 
   _length = 0;
@@ -99,6 +108,11 @@ export class PairingHeap<T> extends AbstractPriorityQueue<T> {
       instance.push(array[i]);
     }
     return instance;
+  }
+
+  constructor({ comparator = defaultComparator }: PriorityQueueOption<T> = {}) {
+    super("PairingHeap");
+    this.comparator = comparator;
   }
 
   clear(): void {
@@ -132,7 +146,7 @@ export class PairingHeap<T> extends AbstractPriorityQueue<T> {
     return ret;
   }
 
-  merge(other: AbstractPriorityQueue<T>): void {
+  merge<Instance extends PriorityQueueInstance<T>>(other: Instance): void {
     if (other instanceof PairingHeap && this.comparator === other.comparator) {
       this.root = mergeNode(this.root, other.root, this.comparator);
       this._length += other.length;
@@ -152,4 +166,8 @@ export class PairingHeap<T> extends AbstractPriorityQueue<T> {
   isEmpty(): boolean {
     return !this.root;
   }
+}
+const check: PriorityQueueStatic = PairingHeap;
+if (check === PairingHeap) {
+  // noop
 }
