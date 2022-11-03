@@ -37,12 +37,46 @@ const iterations = 10000;
 const rootDir = pkgDir.sync();
 mkdirp.sync(path.join(rootDir!, "perf_results"));
 
+function createPadder(length: number, padder: string) {
+  return function padNum(target: string) {
+    return target.padStart(length, padder);
+  };
+}
+
+function lengthInChar(target: number) {
+  return Math.floor(Math.log10(target)) + 1;
+}
+
 function runBenchmarks(ctorRegex?: RegExp, nameRegex?: RegExp) {
-  for (const test of tests) {
-    if (nameRegex && !nameRegex.test(test.name)) continue;
-    for (const Ctor of HeapCtors) {
-      if (ctorRegex && !ctorRegex.test(Ctor.name)) continue;
+  const testsToBeRun = nameRegex
+    ? tests.filter((x) => nameRegex.test(x.name))
+    : tests;
+  const algorithmsToBeRun = ctorRegex
+    ? HeapCtors.filter((x) => ctorRegex.test(x.name))
+    : HeapCtors;
+  const suitesCount =
+    testsToBeRun.length * algorithmsToBeRun.length * sizes.length;
+
+  console.log(`suitesCount: ${suitesCount}`);
+
+  let done = 0;
+  const padDone = createPadder(lengthInChar(suitesCount), "0");
+  const padSize = createPadder(Math.max(...sizes.map(lengthInChar)), " ");
+  const padAlgs = createPadder(
+    Math.max(...HeapCtors.map((x) => x.name.length)),
+    " "
+  );
+
+  for (const test of testsToBeRun) {
+    for (const Ctor of algorithmsToBeRun) {
       for (const size of sizes) {
+        console.log(
+          `(${padDone(done.toString(10))}/${suitesCount}) name: ${
+            test.name
+          }, algorithm: ${padAlgs(Ctor.name)}, size: ${padSize(
+            size.toString(10)
+          )} -- start at ${new Date().toLocaleString()}`
+        );
         const measures = test(Ctor, size, iterations);
         if (measures.length) {
           const result = stats(measures);
@@ -70,6 +104,7 @@ function runBenchmarks(ctorRegex?: RegExp, nameRegex?: RegExp) {
             );
           }
         }
+        done++;
       }
     }
   }
