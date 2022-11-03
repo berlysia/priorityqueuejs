@@ -90,7 +90,7 @@ function mergeChildren<T>(
   return cursor;
 }
 
-export class PairingHeap<T>
+export default class PairingHeap<T>
   extends BasePriorityQueue
   implements PriorityQueueInstance<T>
 {

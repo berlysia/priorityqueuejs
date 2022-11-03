@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
 import { numericGreaterFirst, dictOrderGreaterFirst } from "../comparator";
-import { BinaryHeap } from "../BinaryHeap";
-import { PairingHeap } from "../PairingHeap";
-import { SkewHeap } from "../SkewHeap";
+import BinaryHeap from "../BinaryHeap";
+import PairingHeap from "../PairingHeap";
+import SkewHeap from "../SkewHeap";
 
 const Ctors = [BinaryHeap, PairingHeap, SkewHeap];
 

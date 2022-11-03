@@ -56,7 +56,7 @@ function heapifyAll<T>(instance: BinaryHeap<T>): void {
 /**
  * An implementation of Binary Heap.
  */
-export class BinaryHeap<T>
+export default class BinaryHeap<T>
   extends BasePriorityQueue
   implements PriorityQueueInstance<T>
 {

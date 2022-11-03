@@ -2,9 +2,27 @@
   "name": "priorityqueue",
   "version": "1.0.0",
   "description": "An implementation of Priority Queue",
-  "main": "lib/priorityqueue.js",
-  "module": "lib/priorityqueue.mjs",
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.js"
+    },
+    "./BinaryHeap": {
+      "import": "./lib/BinaryHeap.mjs",
+      "require": "./lib/BinaryHeap.js"
+    },
+    "./PairingHeap": {
+      "import": "./lib/PairingHeap.mjs",
+      "require": "./lib/PairingHeap.js"
+    },
+    "./SkewHeap": {
+      "import": "./lib/SkewHeap.mjs",
+      "require": "./lib/SkewHeap.js"
+    }
+  },
   "sideEffect": false,
   "scripts": {
     "build:code": "vite build",

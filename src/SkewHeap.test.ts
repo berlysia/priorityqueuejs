@@ -1,5 +1,5 @@
 import sharedTest from "./testing";
-import { SkewHeap } from "./SkewHeap";
+import SkewHeap from "./SkewHeap";
 
 sharedTest({
   PriorityQueueCtor: SkewHeap,

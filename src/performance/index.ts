@@ -4,7 +4,9 @@ import pkgDir from "pkg-dir";
 import { sync as mkdirpSync } from "mkdirp";
 import builder from "yargs";
 import * as statistics from "simple-statistics";
-import { BinaryHeap, PairingHeap, SkewHeap } from "..";
+import BinaryHeap from "../BinaryHeap";
+import SkewHeap from "../SkewHeap";
+import PairingHeap from "../PairingHeap";
 import operations from "./operations";
 
 const { testCase, algorithm } = builder

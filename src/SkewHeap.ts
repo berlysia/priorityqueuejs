@@ -45,7 +45,7 @@ function merge<T>(
 /**
  * An implementation of Skew Heap.
  */
-export class SkewHeap<T>
+export default class SkewHeap<T>
   extends BasePriorityQueue
   implements PriorityQueueInstance<T>
 {

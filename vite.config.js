@@ -7,10 +7,12 @@ export default defineConfig({
     outDir: "lib",
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: resolve(__dirname, "src/index.ts"),
-      name: "PriorityQueue",
-      // the proper extensions will be added
-      fileName: "priorityqueue",
+      entry: [
+        "src/index.ts",
+        "src/BinaryHeap.ts",
+        "src/PairingHeap.ts",
+        "src/SkewHeap.ts",
+      ].map((filepath) => resolve(__dirname, filepath)),
       formats: ["es", "cjs"],
     },
     sourcemap: true,
