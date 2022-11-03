@@ -1,6 +1,5 @@
 {
   "out": "docs",
-  "mode": "modules",
   "exclude": [
     "**/performance/**/*",
     "**/testing/**/*",
