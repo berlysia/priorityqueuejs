@@ -1,4 +1,4 @@
-import microseconds from "microseconds";
+import { now as microsecondsNow } from "microseconds";
 import { numericGreaterFirst } from "../../comparator";
 import type { PriorityQueue } from "../../PriorityQueue";
 
@@ -16,9 +16,9 @@ export default function clear<Ctor extends typeof PriorityQueue>(
       }
     );
 
-    const before = microseconds.now();
+    const before = microsecondsNow();
     pq.clear();
-    const after = microseconds.now();
+    const after = microsecondsNow();
     result.push(after - before);
   }
   return result;

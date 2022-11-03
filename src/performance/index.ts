@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import pkgDir from "pkg-dir";
-import mkdirp from "mkdirp";
+import { sync as mkdirpSync } from "mkdirp";
 import builder from "yargs";
 import * as statistics from "simple-statistics";
 import { BinaryHeap, PairingHeap, SkewHeap } from "..";
@@ -35,7 +35,7 @@ const stats = (values: number[]) => ({
 const sizes = [100, 1000, 10000];
 const iterations = 10000;
 const rootDir = pkgDir.sync();
-mkdirp.sync(path.join(rootDir!, "perf_results"));
+mkdirpSync(path.join(rootDir!, "perf_results"));
 
 function createPadder(length: number, padder: string) {
   return function padNum(target: string) {

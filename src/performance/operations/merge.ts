@@ -1,4 +1,4 @@
-import microseconds from "microseconds";
+import { now as microsecondsNow } from "microseconds";
 import { numericGreaterFirst } from "../../comparator";
 import type { PriorityQueue } from "../../PriorityQueue";
 
@@ -21,9 +21,9 @@ export default function merge<Ctor extends typeof PriorityQueue>(
         comparator: numericGreaterFirst,
       }
     );
-    const before = microseconds.now();
+    const before = microsecondsNow();
     a.merge(b);
-    const after = microseconds.now();
+    const after = microsecondsNow();
     result.push(after - before);
   }
   return result;
