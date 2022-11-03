@@ -1,3 +1,4 @@
+import { expect } from "vitest";
 import type { PriorityQueue, PriorityQueueOption } from "../PriorityQueue";
 
 type CustomObject = {

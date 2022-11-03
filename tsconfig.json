@@ -2,6 +2,6 @@
   "extends": "@berlysia/tsconfig",
   "compilerOptions": {
     "target": "es2015",
-    "esModuleInterop": false
+    "esModuleInterop": true
   }
 }

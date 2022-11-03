@@ -1,3 +1,4 @@
+import { test } from "vitest";
 import { numericGreaterFirst, dictOrderGreaterFirst } from "../comparator";
 
 import type { PriorityQueue } from "../PriorityQueue";

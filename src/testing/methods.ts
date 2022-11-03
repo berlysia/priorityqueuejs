@@ -1,3 +1,4 @@
+import { describe, it, test, expect } from "vitest";
 import type { PriorityQueue } from "../PriorityQueue";
 import { numericGreaterFirst } from "../comparator";
 import {
