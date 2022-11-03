@@ -1,7 +1,10 @@
 import { expect } from "vitest";
-import type { PriorityQueue, PriorityQueueOption } from "../PriorityQueue";
+import type {
+  AbstractPriorityQueue,
+  PriorityQueueOption,
+} from "../AbstractPriorityQueue";
 
-export default function general<T, Ctor extends typeof PriorityQueue>({
+export default function general<T, Ctor extends typeof AbstractPriorityQueue>({
   PriorityQueueCtor,
   option,
   sequence,

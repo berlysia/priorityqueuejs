@@ -1,11 +1,14 @@
 import { expect } from "vitest";
-import type { PriorityQueue, PriorityQueueOption } from "../PriorityQueue";
+import type {
+  AbstractPriorityQueue,
+  PriorityQueueOption,
+} from "../AbstractPriorityQueue";
 
 type CustomObject = {
   value: number;
 };
 
-export default function stability<Ctor extends typeof PriorityQueue>({
+export default function stability<Ctor extends typeof AbstractPriorityQueue>({
   PriorityQueueCtor,
   option,
 }: {

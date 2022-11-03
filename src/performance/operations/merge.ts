@@ -1,8 +1,8 @@
 import { now as microsecondsNow } from "microseconds";
 import { numericGreaterFirst } from "../../comparator";
-import type { PriorityQueue } from "../../PriorityQueue";
+import type { AbstractPriorityQueue } from "../../AbstractPriorityQueue";
 
-export default function merge<Ctor extends typeof PriorityQueue>(
+export default function merge<Ctor extends typeof AbstractPriorityQueue>(
   PriorityQueueCtor: Ctor,
   size: number,
   iterations: number

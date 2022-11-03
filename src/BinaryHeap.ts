@@ -1,5 +1,5 @@
-import type { PriorityQueueOption } from "./PriorityQueue";
-import { PriorityQueue } from "./PriorityQueue";
+import type { PriorityQueueOption } from "./AbstractPriorityQueue";
+import { AbstractPriorityQueue } from "./AbstractPriorityQueue";
 
 import type { Comparator } from "./comparator";
 
@@ -51,7 +51,7 @@ function heapifyAll<T>(instance: BinaryHeap<T>): void {
 /**
  * An implementation of Binary Heap.
  */
-export class BinaryHeap<T> extends PriorityQueue<T> {
+export class BinaryHeap<T> extends AbstractPriorityQueue<T> {
   collection: T[] = [];
 
   static from<U>(
@@ -113,7 +113,7 @@ export class BinaryHeap<T> extends PriorityQueue<T> {
     }
   }
 
-  merge(other: PriorityQueue<T>): void {
+  merge(other: AbstractPriorityQueue<T>): void {
     if (other instanceof BinaryHeap) {
       this.collection = this.collection.concat(other.collection);
     } else {

@@ -1,5 +1,5 @@
-import type { PriorityQueueOption } from "./PriorityQueue";
-import { PriorityQueue } from "./PriorityQueue";
+import type { PriorityQueueOption } from "./AbstractPriorityQueue";
+import { AbstractPriorityQueue } from "./AbstractPriorityQueue";
 
 import type { Comparator } from "./comparator";
 
@@ -41,7 +41,7 @@ function merge<T>(
 /**
  * An implementation of Skew Heap.
  */
-export class SkewHeap<T> extends PriorityQueue<T> {
+export class SkewHeap<T> extends AbstractPriorityQueue<T> {
   root: Node<T> | null = null;
 
   _length = 0;
@@ -85,7 +85,7 @@ export class SkewHeap<T> extends PriorityQueue<T> {
     return ret;
   }
 
-  merge(other: PriorityQueue<T>): void {
+  merge(other: AbstractPriorityQueue<T>): void {
     if (other instanceof SkewHeap && this.comparator === other.comparator) {
       this.root = merge(this.root, other.root, this.comparator);
       this._length += other.length;

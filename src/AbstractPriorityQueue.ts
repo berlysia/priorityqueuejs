@@ -11,7 +11,7 @@ export type PriorityQueueOption<T> = {
 /**
  * An Abstract class of Priority Queue.
  */
-export abstract class PriorityQueue<T> {
+export abstract class AbstractPriorityQueue<T> {
   comparator: Comparator<T>;
 
   /**
@@ -20,7 +20,7 @@ export abstract class PriorityQueue<T> {
   static from<U>(
     _array: U[],
     _option?: PriorityQueueOption<U>
-  ): PriorityQueue<U> {
+  ): AbstractPriorityQueue<U> {
     throw new Error("not implemented");
   }
 
@@ -100,7 +100,7 @@ export abstract class PriorityQueue<T> {
   /**
    * Merge another priority queue into this.
    */
-  merge(_other: PriorityQueue<T>): void {
+  merge(_other: AbstractPriorityQueue<T>): void {
     throw new Error("not implemented");
   }
 
