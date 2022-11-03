@@ -42,13 +42,13 @@
     "data structure"
   ],
   "devDependencies": {
-    "@berlysia/eslint-config": "3.2.0",
+    "@berlysia/eslint-config": "3.4.0",
     "@berlysia/tsconfig": "0.0.1",
     "@types/eslint": "8.4.9",
     "@types/lodash.range": "3.2.7",
     "@types/microseconds": "^0.2.0",
     "@types/mkdirp": "1.0.2",
-    "@types/node": "16.18.2",
+    "@types/node": "18.11.9",
     "@types/prettier": "2.7.1",
     "@types/seed-random": "2.2.1",
     "@types/shuffle-array": "1.0.2",
@@ -56,8 +56,8 @@
     "codecov": "3.8.3",
     "conventional-changelog-cli": "2.2.2",
     "eslint": "8.26.0",
-    "gh-pages": "3.2.3",
-    "lint-staged": "12.5.0",
+    "gh-pages": "4.0.0",
+    "lint-staged": "13.0.3",
     "lodash.range": "3.2.0",
     "microseconds": "0.2.0",
     "mkdirp": "1.0.4",
@@ -66,13 +66,13 @@
     "prettier": "2.7.1",
     "seed-random": "2.2.0",
     "shuffle-array": "1.0.1",
-    "simple-statistics": "7.7.6",
+    "simple-statistics": "7.8.0",
     "ts-node": "^10.9.1",
-    "typedoc": "0.23.11",
-    "typescript": "4.8.2",
+    "typedoc": "0.23.20",
+    "typescript": "4.8.4",
     "vite": "^3.2.2",
     "vitest": "^0.24.5",
-    "yargs": "17.5.1"
+    "yargs": "17.6.1"
   },
   "lint-staged": {
     "*.ts": [
