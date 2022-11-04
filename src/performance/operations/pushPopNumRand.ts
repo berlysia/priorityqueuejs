@@ -1,7 +1,7 @@
-import { now as microsecondsNow } from "microseconds";
 import { numericGreaterFirst } from "../../comparator";
 import { createNumericRandomSequence } from "../../testing/utils";
 import type { PriorityQueueStatic } from "../../PriorityQueue";
+import { currentTime } from "../util";
 
 export default function pushPopNumRand<Ctor extends PriorityQueueStatic>(
   PriorityQueueCtor: Ctor,
@@ -19,18 +19,18 @@ export default function pushPopNumRand<Ctor extends PriorityQueueStatic>(
 
   for (let j = iterations; j > 0; --j) {
     const sequence = createNumericRandomSequence({ size });
-    const beforePush = microsecondsNow();
+    const beforePush = currentTime();
     for (const i of sequence) {
       pq.push(i);
     }
-    const afterPush = microsecondsNow();
+    const afterPush = currentTime();
     result.push.push(afterPush - beforePush);
 
-    const beforePop = microsecondsNow();
+    const beforePop = currentTime();
     for (let i = size; i > 0; --i) {
       pq.pop();
     }
-    const afterPop = microsecondsNow();
+    const afterPop = currentTime();
     result.pop.push(afterPop - beforePop);
     pq.clear();
   }

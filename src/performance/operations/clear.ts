@@ -1,6 +1,6 @@
-import { now as microsecondsNow } from "microseconds";
 import { numericGreaterFirst } from "../../comparator";
 import type { PriorityQueueStatic } from "../../PriorityQueue";
+import { currentTime } from "../util";
 
 export default function clear<Ctor extends PriorityQueueStatic>(
   PriorityQueueCtor: Ctor,
@@ -16,9 +16,9 @@ export default function clear<Ctor extends PriorityQueueStatic>(
       }
     );
 
-    const before = microsecondsNow();
+    const before = currentTime();
     pq.clear();
-    const after = microsecondsNow();
+    const after = currentTime();
     result.push(after - before);
   }
   return result;
