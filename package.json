@@ -42,7 +42,7 @@
     "version": "run-s changelog && git add CHANGELOG.md",
     "ci": "run-s lint typecheck test:ci",
     "postci": "codecov",
-    "documentation": "typedoc ./src && touch docs/.nojekyll",
+    "documentation": "typedoc ./src ./src/BinaryHeap.ts ./src/PairingHeap.ts ./src/SkewHeap.ts && touch docs/.nojekyll",
     "postpublish": "yarn documentation && gh-pages -d docs --dotfiles",
     "prepare": "git config --local core.hooksPath .githooks && echo 'githooks installed' || echo 'githooks install failed'"
   },
