@@ -1,3 +1,20 @@
+# [2.0.0-0](https://github.com/berlysia/priorityqueuejs/compare/v1.0.0...v2.0.0-0) (2022-11-04)
+
+
+### Features
+
+* bye abstract class ([28691af](https://github.com/berlysia/priorityqueuejs/commit/28691afcd457b3ed6f8a7ed00ca3287b85e1e6cb))
+* rename PriorityQueue to AbstractPriorityQueue ([a21121c](https://github.com/berlysia/priorityqueuejs/commit/a21121c05fe5122ab821b5edf4760dcb097368f7))
+* update exporting manner ([a67f555](https://github.com/berlysia/priorityqueuejs/commit/a67f555c2d482a8e65efa2183a513377100594d6))
+
+
+### BREAKING CHANGES
+
+* specific implementation is now provided in subdir
+* remove alias methods
+
+
+
 # [1.0.0](https://github.com/berlysia/priorityqueuejs/compare/v1.0.0-rc3.0...v1.0.0) (2019-10-02)
 
 
