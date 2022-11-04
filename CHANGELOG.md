@@ -1,3 +1,12 @@
+# [2.0.0](https://github.com/berlysia/priorityqueuejs/compare/v2.0.0-0...v2.0.0) (2022-11-04)
+
+
+### Features
+
+* export type of option ([01ff281](https://github.com/berlysia/priorityqueuejs/commit/01ff2810dd2106b5da7de494aa4cb926d3a2c6b9))
+
+
+
 # [2.0.0-0](https://github.com/berlysia/priorityqueuejs/compare/v1.0.0...v2.0.0-0) (2022-11-04)
 
 
