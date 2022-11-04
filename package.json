@@ -37,7 +37,7 @@
     "clean": "rm -rf lib/*",
     "test": "vitest",
     "test:ci": "vitest run",
-    "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file --release-count 1 --append",
+    "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file --release-count 0",
     "preversion": "run-s lint test typecheck build",
     "version": "run-s changelog && git add CHANGELOG.md",
     "ci": "run-s lint typecheck test:ci",
