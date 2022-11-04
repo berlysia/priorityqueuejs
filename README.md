@@ -42,17 +42,10 @@ console.log(pq.length); // => 5
 console.log(pq.top()); // => {x: 6, y: 5}
 ```
 
-## Options
+## References
 
-## PriorityQueue(options = {})
-
-### options.comparator
-
-`options.comparator` defines an order of each values in PriorityQueue.
-
-A comparator function format is in according with an argument of [`Array.prototype.sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
-
-⚠️ The predefined order is also the same as [`Array.prototype.sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
+- [instance methods](http://berlysia.github.io/priorityqueuejs/types/index.PriorityQueueInstance.html)
+- [static methods](http://berlysia.github.io/priorityqueuejs/types/index.PriorityQueueStatic.html)
 
 ## Variation
 
