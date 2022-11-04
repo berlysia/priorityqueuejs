@@ -1,9 +1,11 @@
+import { describe, it, expect } from "vitest";
 import { numericGreaterFirst, dictOrderGreaterFirst } from "../comparator";
-import { BinaryHeap } from "../BinaryHeap";
-import { PairingHeap } from "../PairingHeap";
-import { SkewHeap } from "../SkewHeap";
+import BinaryHeap from "../BinaryHeap";
+import PairingHeap from "../PairingHeap";
+import SkewHeap from "../SkewHeap";
+import type { PriorityQueueStatic } from "../PriorityQueue";
 
-const Ctors = [BinaryHeap, PairingHeap, SkewHeap];
+const Ctors: PriorityQueueStatic[] = [BinaryHeap, PairingHeap, SkewHeap];
 
 for (const A of Ctors) {
   for (const B of Ctors) {
@@ -30,7 +32,7 @@ for (const A of Ctors) {
       });
 
       it("mergable even if have different comparator", () => {
-        const a = new A({ comparator: dictOrderGreaterFirst });
+        const a = new A<number>({ comparator: dictOrderGreaterFirst });
         a.push(1);
         a.push(10);
         a.push(100);
@@ -43,7 +45,6 @@ for (const A of Ctors) {
         expect(a.toArray()).toStrictEqual([1, 10, 100]);
         expect(b.toArray()).toStrictEqual([2, 20, 200]);
 
-        // @ts-expect-error
         a.merge(b);
 
         expect(a.toArray()).toStrictEqual([1, 10, 100, 2, 20, 200]);

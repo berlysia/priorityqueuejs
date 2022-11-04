@@ -1,11 +1,15 @@
-import type { PriorityQueue } from "../PriorityQueue";
+import { describe, it, test, expect } from "vitest";
 import { numericGreaterFirst } from "../comparator";
+import type {
+  PriorityQueueInstance,
+  PriorityQueueStatic,
+} from "../PriorityQueue";
 import {
   createNumericSequentialSequence,
   createNumericRandomSequence,
 } from "./utils";
 
-export default function general<Ctor extends typeof PriorityQueue>({
+export default function general<Ctor extends PriorityQueueStatic>({
   PriorityQueueCtor,
 }: {
   PriorityQueueCtor: Ctor;
@@ -16,7 +20,7 @@ export default function general<Ctor extends typeof PriorityQueue>({
     });
     const expected = [...values].sort(numericGreaterFirst);
     const actual = Array(values.length);
-    const pq: PriorityQueue<number> = PriorityQueueCtor.from(values, {
+    const pq: PriorityQueueInstance<number> = PriorityQueueCtor.from(values, {
       comparator: numericGreaterFirst,
     });
     for (let i = values.length - 1; i >= 0; --i) {
@@ -27,8 +31,7 @@ export default function general<Ctor extends typeof PriorityQueue>({
 
   test(`${PriorityQueueCtor.name}: clear`, () => {
     const values: number[] = createNumericSequentialSequence({ size: 3 });
-    // @ts-expect-error
-    const pq: PriorityQueue<number> = new PriorityQueueCtor({
+    const pq: PriorityQueueInstance<number> = new PriorityQueueCtor({
       comparator: numericGreaterFirst,
     });
     for (const v of values) {
@@ -41,8 +44,7 @@ export default function general<Ctor extends typeof PriorityQueue>({
   test(`${PriorityQueueCtor.name}: toArray`, () => {
     const values: number[] = createNumericSequentialSequence({ size: 10 });
     const expected = [...values].sort(numericGreaterFirst);
-    // @ts-expect-error
-    const pq: PriorityQueue<number> = new PriorityQueueCtor({
+    const pq: PriorityQueueInstance<number> = new PriorityQueueCtor({
       comparator: numericGreaterFirst,
     });
     for (const v of values) {
@@ -52,8 +54,7 @@ export default function general<Ctor extends typeof PriorityQueue>({
   });
 
   test(`${PriorityQueueCtor.name}: get length`, () => {
-    // @ts-expect-error
-    const pq: PriorityQueue<number> = new PriorityQueueCtor({
+    const pq: PriorityQueueInstance<number> = new PriorityQueueCtor({
       comparator: numericGreaterFirst,
     });
 
@@ -67,8 +68,7 @@ export default function general<Ctor extends typeof PriorityQueue>({
   });
 
   test(`${PriorityQueueCtor.name}: isEmpty`, () => {
-    // @ts-expect-error
-    const pq: PriorityQueue<number> = new PriorityQueueCtor({
+    const pq: PriorityQueueInstance<number> = new PriorityQueueCtor({
       comparator: numericGreaterFirst,
     });
 
@@ -86,15 +86,13 @@ export default function general<Ctor extends typeof PriorityQueue>({
       size: 10,
       seed: "bValues",
     });
-    // @ts-expect-error
-    const a: PriorityQueue<number> = new PriorityQueueCtor({
+    const a: PriorityQueueInstance<number> = new PriorityQueueCtor({
       comparator: numericGreaterFirst,
     });
     for (const v of aValues) {
       a.push(v);
     }
-    // @ts-expect-error
-    const b: PriorityQueue<number> = new PriorityQueueCtor({
+    const b: PriorityQueueInstance<number> = new PriorityQueueCtor({
       comparator: numericGreaterFirst,
     });
     for (const v of bValues) {
@@ -114,14 +112,12 @@ export default function general<Ctor extends typeof PriorityQueue>({
 
   describe(`${PriorityQueueCtor.name}: top`, () => {
     it("throws for empty", () => {
-      // @ts-expect-error
       const q = new PriorityQueueCtor();
       expect(() => q.top()).toThrow();
     });
 
     it("returns the first item", () => {
-      // @ts-expect-error
-      const q: PriorityQueue<number> = new PriorityQueueCtor({
+      const q: PriorityQueueInstance<number> = new PriorityQueueCtor({
         comparator: numericGreaterFirst,
       });
       q.push(2);
@@ -134,14 +130,12 @@ export default function general<Ctor extends typeof PriorityQueue>({
 
   describe(`${PriorityQueueCtor.name}: pop`, () => {
     it("throws for empty", () => {
-      // @ts-expect-error
       const q = new PriorityQueueCtor();
       expect(() => q.pop()).toThrow();
     });
 
     it("returns the first item", () => {
-      // @ts-expect-error
-      const q: PriorityQueue<number> = new PriorityQueueCtor({
+      const q: PriorityQueueInstance<number> = new PriorityQueueCtor({
         comparator: numericGreaterFirst,
       });
       q.push(2);

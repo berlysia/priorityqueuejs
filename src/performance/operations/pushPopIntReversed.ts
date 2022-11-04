@@ -1,13 +1,12 @@
-import microseconds from "microseconds";
 import { numericGreaterFirst } from "../../comparator";
-import type { PriorityQueue } from "../../PriorityQueue";
+import type { PriorityQueueStatic } from "../../PriorityQueue";
+import { currentTime } from "../util";
 
-export default function pushPopIntReversed<Ctor extends typeof PriorityQueue>(
+export default function pushPopIntReversed<Ctor extends PriorityQueueStatic>(
   PriorityQueueCtor: Ctor,
   size: number,
   iterations: number
 ) {
-  // @ts-expect-error
   const pq = new PriorityQueueCtor({
     comparator: numericGreaterFirst,
   });
@@ -18,18 +17,18 @@ export default function pushPopIntReversed<Ctor extends typeof PriorityQueue>(
   };
 
   for (let j = iterations; j > 0; --j) {
-    const beforePush = microseconds.now();
+    const beforePush = currentTime();
     for (let i = 0, l = size; i < l; ++i) {
       pq.push(i);
     }
-    const afterPush = microseconds.now();
+    const afterPush = currentTime();
     result.push.push(afterPush - beforePush);
 
-    const beforePop = microseconds.now();
+    const beforePop = currentTime();
     for (let i = size; i > 0; --i) {
       pq.pop();
     }
-    const afterPop = microseconds.now();
+    const afterPop = currentTime();
     result.pop.push(afterPop - beforePop);
     pq.clear();
   }

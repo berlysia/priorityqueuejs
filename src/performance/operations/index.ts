@@ -1,6 +1,6 @@
 import fs from "fs";
 
-const files = fs.readdirSync(__dirname).filter((x) => x !== "index.js");
+const files = fs.readdirSync(__dirname).filter((x) => !x.startsWith("index"));
 
 const modules = files
   .map((x) => `./${x}`)

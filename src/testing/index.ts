@@ -1,6 +1,7 @@
+import { test } from "vitest";
 import { numericGreaterFirst, dictOrderGreaterFirst } from "../comparator";
 
-import type { PriorityQueue } from "../PriorityQueue";
+import type { PriorityQueueStatic } from "../PriorityQueue";
 import {
   createNumericSequentialSequence,
   createNumericShuffledSequence,
@@ -10,7 +11,7 @@ import {
 import pushPop from "./pushPop";
 import methods from "./methods";
 
-export default function testSuite<Ctor extends typeof PriorityQueue>({
+export default function testSuite<Ctor extends PriorityQueueStatic>({
   PriorityQueueCtor,
   size = 100,
 }: {

@@ -1,6 +1,10 @@
-import type { PriorityQueue, PriorityQueueOption } from "../PriorityQueue";
+import { expect } from "vitest";
+import type {
+  PriorityQueueStatic,
+  PriorityQueueOption,
+} from "../PriorityQueue";
 
-export default function general<T, Ctor extends typeof PriorityQueue>({
+export default function general<T, Ctor extends PriorityQueueStatic>({
   PriorityQueueCtor,
   option,
   sequence,
@@ -11,7 +15,6 @@ export default function general<T, Ctor extends typeof PriorityQueue>({
 }): void {
   const expected = [...sequence].sort(option.comparator);
   const actual = Array(sequence.length);
-  // @ts-expect-error
   const pq = new PriorityQueueCtor(option);
   for (const v of sequence) {
     pq.push(v);

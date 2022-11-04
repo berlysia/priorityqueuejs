@@ -84,11 +84,10 @@ Not to use:
 ## Import specific implementation
 
 ```js
-import PriorityQueue, {
-  BinaryHeap,
-  PairingHeap,
-  SkewHeap,
-} from "priorityqueue";
+import PriorityQueue from "priorityqueue";
+import BinaryHeap from "priorityqueue/BinaryHeap";
+import PairingHeap from "priorityqueue/PairingHeap";
+import SkewHeap from "priorityqueue/SkewHeap";
 
 console.log(PriorityQueue === BinaryHeap); // => true
 ```

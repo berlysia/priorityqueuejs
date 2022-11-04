@@ -7,7 +7,7 @@
 
 ### Bug Fixes
 
-* fix for lint ([986bc34](https://github.com/berlysia/priorityqueuejs/commit/986bc34))
+* fix for lint ([986bc34](https://github.com/berlysia/priorityqueuejs/commit/986bc34f8cb48e7ea0c982101c1db535b69273d3))
 
 
 
@@ -20,28 +20,28 @@
 
 ### Bug Fixes
 
-* move global declaration file ([594907f](https://github.com/berlysia/priorityqueuejs/commit/594907f))
-* suppress eslint rule ([e816c2d](https://github.com/berlysia/priorityqueuejs/commit/e816c2d))
+* move global declaration file ([594907f](https://github.com/berlysia/priorityqueuejs/commit/594907f42c4388e9e64571a1951621d177f48079))
+* suppress eslint rule ([e816c2d](https://github.com/berlysia/priorityqueuejs/commit/e816c2dfb043d54a656c7d9b7751fcd365698aae))
 
 
 ### Code Refactoring
 
-* **PairingHeap:** improve performance ([bef6e79](https://github.com/berlysia/priorityqueuejs/commit/bef6e79))
+* **PairingHeap:** improve performance ([bef6e79](https://github.com/berlysia/priorityqueuejs/commit/bef6e79ad2ff4a185a4451b3d31f1e755c7487c7))
 
 
 ### Features
 
-* clear after merge ([c7ce527](https://github.com/berlysia/priorityqueuejs/commit/c7ce527))
-* now PairingHeap has stable order ([76719e7](https://github.com/berlysia/priorityqueuejs/commit/76719e7))
+* clear after merge ([c7ce527](https://github.com/berlysia/priorityqueuejs/commit/c7ce527b976cbdae9a3949118345b14c58805279))
+* now PairingHeap has stable order ([76719e7](https://github.com/berlysia/priorityqueuejs/commit/76719e7bf3710cf750933e881893239707a1a4a7))
 
 
 ### Performance Improvements
 
-* add filter ([60c3997](https://github.com/berlysia/priorityqueuejs/commit/60c3997))
-* add simple performance mesurement codes ([34fa5fa](https://github.com/berlysia/priorityqueuejs/commit/34fa5fa))
-* rewrite perf ([d92e147](https://github.com/berlysia/priorityqueuejs/commit/d92e147))
-* separate perf case for Integer or Number ([19c4ea7](https://github.com/berlysia/priorityqueuejs/commit/19c4ea7))
-* store results as files ([bd61d7c](https://github.com/berlysia/priorityqueuejs/commit/bd61d7c))
+* add filter ([60c3997](https://github.com/berlysia/priorityqueuejs/commit/60c3997f889250414ed8015041416a6cd2e800c4))
+* add simple performance mesurement codes ([34fa5fa](https://github.com/berlysia/priorityqueuejs/commit/34fa5fabadedf3b612ae4181747a23af79c9140a))
+* rewrite perf ([d92e147](https://github.com/berlysia/priorityqueuejs/commit/d92e147f1bff7fff4b1b70ce9baaed272cda1e1e))
+* separate perf case for Integer or Number ([19c4ea7](https://github.com/berlysia/priorityqueuejs/commit/19c4ea79c9d0b4c57018d458e8c63c0addff2b37))
+* store results as files ([bd61d7c](https://github.com/berlysia/priorityqueuejs/commit/bd61d7c2ecb4c494f83b388ce8ae9a7325910052))
 
 
 ### BREAKING CHANGES
@@ -55,20 +55,20 @@
 
 ### Bug Fixes
 
-* **BinaryHeap:** now throw Error when call method to take out from empty priority queue ([286f48b](https://github.com/berlysia/priorityqueuejs/commit/286f48b))
-* **type:** fix flow inference issue ([af2fb96](https://github.com/berlysia/priorityqueuejs/commit/af2fb96))
-* **type:** top & pop returns non-null value ([bf19ebd](https://github.com/berlysia/priorityqueuejs/commit/bf19ebd))
+* **BinaryHeap:** now throw Error when call method to take out from empty priority queue ([286f48b](https://github.com/berlysia/priorityqueuejs/commit/286f48b9f20a11246de1954a22a8d6f3729c5adf))
+* **type:** fix flow inference issue ([af2fb96](https://github.com/berlysia/priorityqueuejs/commit/af2fb96c95ac66720c501614bf236e6f9591595f))
+* **type:** top & pop returns non-null value ([bf19ebd](https://github.com/berlysia/priorityqueuejs/commit/bf19ebd20fdb34a738a6043065e3a4caccbbabe6))
 
 
 ### Code Refactoring
 
-* export strategies directly ([671649e](https://github.com/berlysia/priorityqueuejs/commit/671649e))
+* export strategies directly ([671649e](https://github.com/berlysia/priorityqueuejs/commit/671649e72cad78e64accd1dc4ba88e1e41011f97))
 
 
 ### Features
 
-* **type:** add type definition file for flowtype & TypeScript ([0591984](https://github.com/berlysia/priorityqueuejs/commit/0591984))
-* remove method 'meld' ([6e215a1](https://github.com/berlysia/priorityqueuejs/commit/6e215a1))
+* remove method 'meld' ([6e215a1](https://github.com/berlysia/priorityqueuejs/commit/6e215a1c02c4e5be76f377cbb1304ecfa8991a97))
+* **type:** add type definition file for flowtype & TypeScript ([0591984](https://github.com/berlysia/priorityqueuejs/commit/0591984b974a8503fe68ad36ed5839caf475ea5e))
 
 
 ### BREAKING CHANGES
