@@ -38,11 +38,11 @@
     "test": "vitest",
     "test:ci": "vitest run",
     "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file --release-count 0",
-    "preversion": "run-s lint test typecheck build",
+    "preversion": "run-s ci build",
     "version": "run-s changelog && git add CHANGELOG.md",
     "ci": "run-s lint typecheck test:ci",
     "postci": "codecov",
-    "documentation": "typedoc ./src ./src/BinaryHeap.ts ./src/PairingHeap.ts ./src/SkewHeap.ts && touch docs/.nojekyll",
+    "documentation": "typedoc ./src/index.ts ./src/BinaryHeap.ts ./src/PairingHeap.ts ./src/SkewHeap.ts && touch docs/.nojekyll",
     "postpublish": "yarn documentation && gh-pages -d docs --dotfiles",
     "prepare": "git config --local core.hooksPath .githooks && echo 'githooks installed' || echo 'githooks install failed'"
   },
