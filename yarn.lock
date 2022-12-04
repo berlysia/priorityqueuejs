@@ -23,10 +23,10 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@berlysia/eslint-config@3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@berlysia/eslint-config/-/eslint-config-3.4.0.tgz#15cfddae4796a4a26ec3f4693ec76d2b68bc9590"
-  integrity sha512-JJvCYxbLXNreYYBdTVhEC7HM6Op6X/oiuFfuw4W6GEZkD/DZxHbz+/h+px2HR90Wp4awNstmqIlF/mpS7T908Q==
+"@berlysia/eslint-config@3.5.1":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@berlysia/eslint-config/-/eslint-config-3.5.1.tgz#1eca7b6dbcf98477750fe646278d42a5b7923c5b"
+  integrity sha512-n9E2dagozsEN/Ajzcs4CUEceVm6VjNhQK2KeU7ehkqfT/BKAKMWYDay+WrLMzz2W20PsCwgptIAoAXrCZUoHZg==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.36.2"
     "@typescript-eslint/parser" "^5.36.2"
@@ -2260,10 +2260,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-lint-staged@13.0.4:
-  version "13.0.4"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-13.0.4.tgz#c4b4391280c35165b805ad43304ba01f733067a0"
-  integrity sha512-HxlHCXoYRsq9QCby5wFozmZW00hMs/9e3l+/dz6Qr8Kle4UH0kJTdABAbqhzG+3pcG6QjL9kz7NgGBfph+a5dw==
+lint-staged@13.1.0:
+  version "13.1.0"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-13.1.0.tgz#d4c61aec939e789e489fa51987ec5207b50fd37e"
+  integrity sha512-pn/sR8IrcF/T0vpWLilih8jmVouMlxqXxKuAojmbiGX5n/gDnz+abdPptlj0vYnbfE0SQNl3CY/HwtM0+yfOVQ==
   dependencies:
     cli-truncate "^3.1.0"
     colorette "^2.0.19"

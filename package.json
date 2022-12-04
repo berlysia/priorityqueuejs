@@ -60,7 +60,7 @@
     "data structure"
   ],
   "devDependencies": {
-    "@berlysia/eslint-config": "3.4.0",
+    "@berlysia/eslint-config": "3.5.1",
     "@berlysia/tsconfig": "0.0.1",
     "@types/eslint": "8.4.10",
     "@types/lodash.range": "3.2.7",
@@ -75,7 +75,7 @@
     "conventional-changelog-cli": "2.2.2",
     "eslint": "8.27.0",
     "gh-pages": "4.0.0",
-    "lint-staged": "13.0.4",
+    "lint-staged": "13.1.0",
     "lodash.range": "3.2.0",
     "microseconds": "0.2.0",
     "mkdirp": "1.0.4",
