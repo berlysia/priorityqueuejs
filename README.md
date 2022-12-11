@@ -84,3 +84,7 @@ import SkewHeap from "priorityqueue/SkewHeap";
 
 console.log(PriorityQueue === BinaryHeap); // => true
 ```
+
+### TypeScript users
+
+If your tsconfig specifies `moduleResolution: "node"` (whether implicitly or explicitly), use `priorityqueue/lib/BinaryHeap` instead of `priorityqueue/BinaryHeap` .
