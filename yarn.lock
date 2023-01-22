@@ -3396,10 +3396,10 @@ signal-exit@^3.0.2, signal-exit@^3.0.7:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
 
-simple-statistics@7.8.0:
-  version "7.8.0"
-  resolved "https://registry.yarnpkg.com/simple-statistics/-/simple-statistics-7.8.0.tgz#1033d2d613656c7bd34f0e134fd7e69c803e6836"
-  integrity sha512-lTWbfJc0u6GZhBojLOrlHJMTHu6PdUjSsYLrpiH902dVBiYJyWlN/LdSoG8b5VvfG1D30gIBgarqMNeNmU5nAA==
+simple-statistics@7.8.2:
+  version "7.8.2"
+  resolved "https://registry.yarnpkg.com/simple-statistics/-/simple-statistics-7.8.2.tgz#863c234c85d542610d9ce131caa110b495a587f4"
+  integrity sha512-evB7wiL4DSz6T9TdCTfRRqNcmnp0bllcUfZ4NBwtkdGMbXrYsZbrGxfunLPqdqCyT2Yz1NvLrKS7LVOoFBCxbA==
 
 slash@^3.0.0:
   version "3.0.0"
