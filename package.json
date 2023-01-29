@@ -73,7 +73,7 @@
     "@types/yargs": "17.0.20",
     "codecov": "3.8.3",
     "conventional-changelog-cli": "2.2.2",
-    "eslint": "8.32.0",
+    "eslint": "8.33.0",
     "gh-pages": "4.0.0",
     "lint-staged": "13.1.0",
     "lodash.range": "3.2.0",
