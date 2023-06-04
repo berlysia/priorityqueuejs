@@ -86,7 +86,7 @@
     "shuffle-array": "1.0.1",
     "simple-statistics": "7.8.3",
     "ts-node": "^10.9.1",
-    "typedoc": "0.24.7",
+    "typedoc": "0.24.8",
     "typescript": "4.9.5",
     "vite": "^3.2.2",
     "vitest": "^0.31.0",
