@@ -62,7 +62,7 @@
   "devDependencies": {
     "@berlysia/eslint-config": "3.5.1",
     "@berlysia/tsconfig": "0.0.1",
-    "@types/eslint": "8.40.1",
+    "@types/eslint": "8.40.2",
     "@types/lodash.range": "3.2.7",
     "@types/microseconds": "^0.2.0",
     "@types/mkdirp": "1.0.2",
@@ -73,7 +73,7 @@
     "@types/yargs": "17.0.24",
     "codecov": "3.8.3",
     "conventional-changelog-cli": "2.2.2",
-    "eslint": "8.42.0",
+    "eslint": "8.43.0",
     "gh-pages": "4.0.0",
     "lint-staged": "13.2.2",
     "lodash.range": "3.2.0",
