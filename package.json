@@ -75,7 +75,7 @@
     "conventional-changelog-cli": "2.2.2",
     "eslint": "8.54.0",
     "gh-pages": "4.0.0",
-    "lint-staged": "13.3.0",
+    "lint-staged": "15.2.0",
     "lodash.range": "3.2.0",
     "microseconds": "0.2.0",
     "mkdirp": "1.0.4",
