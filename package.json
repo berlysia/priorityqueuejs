@@ -60,7 +60,7 @@
     "data structure"
   ],
   "devDependencies": {
-    "@berlysia/eslint-config": "3.5.1",
+    "@berlysia/eslint-config": "5.0.13",
     "@berlysia/tsconfig": "0.0.1",
     "@types/eslint": "8.56.10",
     "@types/lodash.range": "3.2.9",
