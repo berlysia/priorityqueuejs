@@ -62,7 +62,7 @@
   "devDependencies": {
     "@berlysia/eslint-config": "3.5.1",
     "@berlysia/tsconfig": "0.0.1",
-    "@types/eslint": "8.56.11",
+    "@types/eslint": "8.56.12",
     "@types/lodash.range": "3.2.9",
     "@types/microseconds": "^0.2.0",
     "@types/mkdirp": "1.0.2",
