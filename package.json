@@ -86,8 +86,8 @@
     "shuffle-array": "1.0.1",
     "simple-statistics": "7.8.8",
     "ts-node": "^10.9.1",
-    "typedoc": "0.28.7",
-    "typescript": "5.8.3",
+    "typedoc": "0.28.9",
+    "typescript": "5.9.2",
     "vite": "^5.0.0",
     "vitest": "^0.34.0",
     "yargs": "17.7.2"
