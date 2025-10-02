@@ -1,14 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import builder from "yargs";
+import yargs from "yargs";
 import * as statistics from "simple-statistics";
 import BinaryHeap from "../BinaryHeap";
 import SkewHeap from "../SkewHeap";
 import PairingHeap from "../PairingHeap";
 import operations from "./operations";
 
-const { testCase, algorithm } = builder
+const { testCase, algorithm } = yargs(process.argv.slice(2))
   .option("testCase", {
     alias: "t",
     describe: "filter by test case name",

@@ -17,7 +17,7 @@ export default function stability<Ctor extends PriorityQueueStatic>({
 }): void {
   const given = Array.from({ length: 10 })
     .fill(5)
-    .map((value, index) => ({ value, index }));
+    .map((value, index) => ({ value: value as number, index }));
   const actual = Array.from({ length: 10 });
   const pq = new PriorityQueueCtor(option);
   for (const v of given) {
