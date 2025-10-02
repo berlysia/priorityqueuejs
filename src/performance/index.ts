@@ -1,6 +1,6 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import builder from "yargs";
 import * as statistics from "simple-statistics";
 import BinaryHeap from "../BinaryHeap";
@@ -33,8 +33,8 @@ const stats = (values: number[]) => ({
   max: statistics.max(values),
 });
 
-const sizes = [100, 1000, 10000];
-const iterations = 10000;
+const sizes = [100, 1000, 10_000];
+const iterations = 10_000;
 const rootDir = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "../.."
@@ -82,7 +82,7 @@ function runBenchmarks(ctorRegex?: RegExp, nameRegex?: RegExp) {
           )} -- start at ${new Date().toLocaleString()}`
         );
         const measures = test(Ctor, size, iterations);
-        if (measures.length) {
+        if (measures.length > 0) {
           const result = stats(measures);
           fs.writeFileSync(
             path.join(

@@ -15,10 +15,10 @@ export default function stability<Ctor extends PriorityQueueStatic>({
   PriorityQueueCtor: Ctor;
   option: PriorityQueueOption<CustomObject>;
 }): void {
-  const given = Array(10)
+  const given = Array.from({ length: 10 })
     .fill(5)
     .map((value, index) => ({ value, index }));
-  const actual = Array(10);
+  const actual = Array.from({ length: 10 });
   const pq = new PriorityQueueCtor(option);
   for (const v of given) {
     pq.push(v);

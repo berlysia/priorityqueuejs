@@ -68,7 +68,7 @@ export default class BinaryHeap<T>
     option: PriorityQueueOption<U> = {}
   ): BinaryHeap<U> {
     const instance = new BinaryHeap(option);
-    instance.collection = Array.from(array);
+    instance.collection = [...array];
     heapifyAll(instance);
     return instance;
   }
@@ -128,17 +128,16 @@ export default class BinaryHeap<T>
   }
 
   merge<Instance extends PriorityQueueInstance<T>>(other: Instance): void {
-    if (other instanceof BinaryHeap) {
-      this.collection = this.collection.concat(other.collection);
-    } else {
-      this.collection = this.collection.concat(other.toArray());
-    }
+    this.collection =
+      other instanceof BinaryHeap
+        ? this.collection.concat(other.collection)
+        : this.collection.concat(other.toArray());
     heapifyAll(this);
     other.clear();
   }
 
   isEmpty(): boolean {
-    return !this.collection.length;
+    return this.collection.length === 0;
   }
 }
 

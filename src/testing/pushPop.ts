@@ -14,7 +14,7 @@ export default function general<T, Ctor extends PriorityQueueStatic>({
   sequence: T[];
 }): void {
   const expected = [...sequence].sort(option.comparator);
-  const actual = Array(sequence.length);
+  const actual = Array.from({ length: sequence.length });
   const pq = new PriorityQueueCtor(option);
   for (const v of sequence) {
     pq.push(v);
