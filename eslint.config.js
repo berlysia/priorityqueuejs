@@ -21,6 +21,7 @@ export default berlysia(
       "jsdoc/require-template": "off",
       "unicorn/prefer-spread": "off",
       "unicorn/no-new-array": "off",
+      "unicorn/no-array-push-push": "off",
       "no-useless-assignment": "off",
     },
   },
