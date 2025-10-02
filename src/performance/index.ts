@@ -1,15 +1,14 @@
-import fs from "fs";
-import path from "path";
-import pkgDir from "pkg-dir";
-import { sync as mkdirpSync } from "mkdirp";
-import builder from "yargs";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import yargs from "yargs";
 import * as statistics from "simple-statistics";
 import BinaryHeap from "../BinaryHeap";
 import SkewHeap from "../SkewHeap";
 import PairingHeap from "../PairingHeap";
 import operations from "./operations";
 
-const { testCase, algorithm } = builder
+const { testCase, algorithm } = yargs(process.argv.slice(2))
   .option("testCase", {
     alias: "t",
     describe: "filter by test case name",
@@ -34,10 +33,13 @@ const stats = (values: number[]) => ({
   max: statistics.max(values),
 });
 
-const sizes = [100, 1000, 10000];
-const iterations = 10000;
-const rootDir = pkgDir.sync();
-mkdirpSync(path.join(rootDir!, "perf_results"));
+const sizes = [100, 1000, 10_000];
+const iterations = 10_000;
+const rootDir = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../.."
+);
+fs.mkdirSync(path.join(rootDir, "perf_results"), { recursive: true });
 
 function createPadder(length: number, padder: string) {
   return function padNum(target: string) {
@@ -80,11 +82,11 @@ function runBenchmarks(ctorRegex?: RegExp, nameRegex?: RegExp) {
           )} -- start at ${new Date().toLocaleString()}`
         );
         const measures = test(Ctor, size, iterations);
-        if (measures.length) {
+        if (measures.length > 0) {
           const result = stats(measures);
           fs.writeFileSync(
             path.join(
-              rootDir!,
+              rootDir,
               "perf_results",
               `${Ctor.name}-${test.name}-${size}.json`
             ),
@@ -97,7 +99,7 @@ function runBenchmarks(ctorRegex?: RegExp, nameRegex?: RegExp) {
             const result = stats(measures[key]);
             fs.writeFileSync(
               path.join(
-                rootDir!,
+                rootDir,
                 "perf_results",
                 `${Ctor.name}-${test.name}-${key}-${size}.json`
               ),

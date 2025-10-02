@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 
 const files = fs.readdirSync(__dirname).filter((x) => !x.startsWith("index"));
 

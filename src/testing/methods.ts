@@ -19,7 +19,7 @@ export default function general<Ctor extends PriorityQueueStatic>({
       size: 100,
     });
     const expected = [...values].sort(numericGreaterFirst);
-    const actual = Array(values.length);
+    const actual = Array.from({ length: values.length });
     const pq: PriorityQueueInstance<number> = PriorityQueueCtor.from(values, {
       comparator: numericGreaterFirst,
     });
@@ -103,7 +103,7 @@ export default function general<Ctor extends PriorityQueueStatic>({
 
     const valueLength = aValues.length + bValues.length;
     const expected = [...aValues, ...bValues].sort(numericGreaterFirst);
-    const actual = Array(valueLength);
+    const actual = new Array(valueLength);
     for (let i = valueLength - 1; i >= 0; --i) {
       actual[i] = a.pop();
     }
