@@ -62,7 +62,7 @@
     "@berlysia/tsconfig": "0.0.1",
     "@types/eslint": "8.56.12",
     "@types/lodash.range": "3.2.9",
-    "@types/microseconds": "^0.2.0",
+    "@types/microseconds": "0.2.2",
     "@types/node": "20.19.17",
     "@types/prettier": "2.7.3",
     "@types/seed-random": "2.2.4",
@@ -79,8 +79,8 @@
     "simple-statistics": "7.8.8",
     "typedoc": "0.28.13",
     "typescript": "5.9.3",
-    "vite": "^7.1.8",
-    "vitest": "^3.2.4",
+    "vite": "7.1.8",
+    "vitest": "3.2.4",
     "yargs": "17.7.2"
   },
   "lint-staged": {
