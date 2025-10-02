@@ -120,7 +120,9 @@ export default function general<Ctor extends PriorityQueueStatic>({
       const q: PriorityQueueInstance<number> = new PriorityQueueCtor({
         comparator: numericGreaterFirst,
       });
-      q.push(2, 3, 1);
+      q.push(2);
+      q.push(3);
+      q.push(1);
       expect(q.top()).toBe(3);
       expect(q).toHaveLength(3);
     });
@@ -136,7 +138,9 @@ export default function general<Ctor extends PriorityQueueStatic>({
       const q: PriorityQueueInstance<number> = new PriorityQueueCtor({
         comparator: numericGreaterFirst,
       });
-      q.push(2, 3, 1);
+      q.push(2);
+      q.push(3);
+      q.push(1);
       expect(q.pop()).toBe(3);
       expect(q).toHaveLength(2);
     });
