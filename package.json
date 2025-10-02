@@ -1,6 +1,6 @@
 {
   "name": "priorityqueue",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "An implementation of Priority Queue",
   "packageManager": "pnpm@10.17.1",
   "main": "lib/index.js",

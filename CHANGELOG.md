@@ -1,3 +1,7 @@
+# [2.1.0](https://github.com/berlysia/priorityqueuejs/compare/v2.0.0...v2.1.0) (2025-10-02)
+
+
+
 # [2.0.0](https://github.com/berlysia/priorityqueuejs/compare/v2.0.0-0...v2.0.0) (2022-11-04)
 
 
