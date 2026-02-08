@@ -2,7 +2,7 @@
   "name": "priorityqueue",
   "version": "2.1.0",
   "description": "An implementation of Priority Queue",
-  "packageManager": "pnpm@10.28.1",
+  "packageManager": "pnpm@10.28.2",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
