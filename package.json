@@ -80,7 +80,7 @@
     "shuffle-array": "1.0.1",
     "simple-statistics": "7.8.9",
     "typedoc": "0.28.19",
-    "typescript": "5.9.3",
+    "typescript": "6.0.3",
     "vite": "7.3.2",
     "vitest": "3.2.4",
     "yargs": "17.7.2"
