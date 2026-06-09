@@ -82,7 +82,7 @@
     "typedoc": "0.28.19",
     "typescript": "5.9.3",
     "vite": "7.3.3",
-    "vitest": "3.2.4",
+    "vitest": "3.2.6",
     "yargs": "17.7.2"
   },
   "lint-staged": {
