@@ -81,7 +81,7 @@
     "simple-statistics": "7.9.3",
     "typedoc": "0.28.20",
     "typescript": "5.9.3",
-    "vite": "7.3.6",
+    "vite": "8.2.0",
     "vitest": "3.2.7",
     "yargs": "17.7.3"
   },
