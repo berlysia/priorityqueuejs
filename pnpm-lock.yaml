@@ -66,8 +66,8 @@ importers:
         specifier: 1.0.1
         version: 1.0.1
       simple-statistics:
-        specifier: 7.9.3
-        version: 7.9.3
+        specifier: 7.10.1
+        version: 7.10.1
       typedoc:
         specifier: 0.28.20
         version: 0.28.20(typescript@5.9.3)
@@ -2908,8 +2908,8 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
-  simple-statistics@7.9.3:
-    resolution: {integrity: sha512-WXpxUfo7BJCRpyl4besiuMV7wNj9xiPIq7IKmUQO4upIaF8pK2AXwhjttHN5L8KXZrLkGMCHGHq4p+pJXiIahQ==}
+  simple-statistics@7.10.1:
+    resolution: {integrity: sha512-Ao1uRUD8K18irQdAymQH8fDa3Tw8EfdxdNKOM2khG3AU5xnKZMS5WzgDmXze0bUAoNmsjsyknPHxyaq9UKMRzQ==}
 
   slice-ansi@5.0.0:
     resolution: {integrity: sha512-FC+lgizVPfie0kkhqUScwRu1O/lF6NOgJmlCgK+/LYxDCTk8sGelYaHDhFcDN+Sn3Cv+3VSa4Byeo+IMCzpMgQ==}
@@ -6606,7 +6606,7 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  simple-statistics@7.9.3: {}
+  simple-statistics@7.10.1: {}
 
   slice-ansi@5.0.0:
     dependencies:
