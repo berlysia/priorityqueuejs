@@ -78,7 +78,7 @@
     "prettier": "3.9.6",
     "seed-random": "2.2.0",
     "shuffle-array": "1.0.1",
-    "simple-statistics": "7.9.3",
+    "simple-statistics": "7.10.1",
     "typedoc": "0.28.20",
     "typescript": "5.9.3",
     "vite": "7.3.6",
